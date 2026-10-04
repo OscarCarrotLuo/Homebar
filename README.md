@@ -2,6 +2,12 @@
 
 六页独立视觉风格，32 款正式饮品。仅中英文饮品文字，无饮品图片、无价格。
 
+## 在线访问
+
+[打开 Menu 饮品单](https://oscarcarrotluo.github.io/Homebar/)
+
+网站由 GitHub Pages 从 `main` 分支的根目录发布。将菜单修改提交并推送到 `main` 后，GitHub 会自动更新网站。
+
 ## 直接打开
 
 双击 `index.html` 即可使用。HTML、样式、交互、三维库与字体全部保存在本地；无构建步骤、无 npm 依赖、无 CDN 请求。
