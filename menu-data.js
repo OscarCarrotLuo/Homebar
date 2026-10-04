@@ -8,7 +8,7 @@ window.MENU_PAGES = [
  {id:'coffee-1',category:'coffee',title:'Coffee',theme:'coffee-one',label:'奶香 · 浓郁',caption:'CREAM & ROAST',number:'03',part:'01 / 02',colors:['#352522','#f1dfbf','#c88650','rgba(241,223,191,.25)'],drinks:[
  ['黑芝麻奶盖拿铁','Black Sesame Cream Latte'],['桂花流沙拿铁','Osmanthus Lava Latte'],['生巧海盐摩卡','Sea Salt Chocolate Mocha'],['香蕉冰卡布','Iced Banana Cappuccino'],['开心果拿铁','Pistachio Latte']]},
  {id:'coffee-2',category:'coffee',title:'Coffee',theme:'coffee-two',label:'椰香 · 果萃',caption:'COCONUT & CITRUS',number:'04',part:'02 / 02',colors:['#eee6d6','#423726','#d66d38','rgba(66,55,38,.26)'],drinks:[
- ['生椰拿铁','Coconut Latte'],['生椰美式','Coconut Americano'],['日落美式','Sunset Americano'],['泰国Moscow','Thai Moscow'],['西西里冷萃','Sicilian Cold Brew']]},
+ ['生椰拿铁','Coconut Latte'],['生椰美式','Coconut Americano'],['日落美式','Sunset Americano'],['Moscow','Moscow'],['西西里冷萃','Sicilian Cold Brew']]},
  {id:'cocktail-1',category:'cocktail',title:'Cocktail',theme:'cocktail-one',label:'高杯 · 清爽',caption:'HIGHBALL & FIZZ',number:'05',part:'01 / 02',colors:['#243cbb','#f0f2d8','#e1f17b','rgba(240,242,216,.28)'],drinks:[
  ['金汤力','Gin & Tonic'],['莫吉托','Mojito'],['螺丝起子','Screwdriver'],['长岛冰茶','Long Island Iced Tea'],['金菲士','Gin Fizz']]},
  {id:'cocktail-2',category:'cocktail',title:'Cocktail',theme:'cocktail-two',label:'经典 · 短饮',caption:'SPIRITS & CLASSICS',number:'06',part:'02 / 02',colors:['#411d30','#f3c3ba','#e78550','rgba(243,195,186,.26)'],drinks:[
