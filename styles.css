@@ -214,3 +214,17 @@ body.motion-paused *,body.motion-paused *:before,body.motion-paused *:after,body
 }
 /* Pausing never freezes menu text halfway through its entrance. */
 body.motion-paused .is-active h1,body.motion-paused .is-active .drink-list li,body.motion-paused .geometry-canvas{animation:none!important}
+
+/* Keep only the category, drinks, animated geometry and six page selectors. */
+.page-controls{display:flex;justify-content:center;grid-template-columns:none}
+.motion-toggle{justify-content:center;min-width:44px}
+.poster-grid{min-height:calc(100svh - 210px)}
+@media(min-width:641px) and (max-height:820px){.poster-grid{min-height:calc(100svh - 181px)}}
+@media(max-width:640px){
+ .page-controls{display:flex;justify-content:center}
+ .pagination{width:100%;max-width:400px}
+ .pagination a{flex:1}
+ .poster-grid{min-height:0}
+ .poster-art{padding-bottom:0}
+ .geometry{bottom:0}
+}

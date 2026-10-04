@@ -72,3 +72,4 @@ body.detail-mode{display:block;min-height:100svh}
 .detail-grid{padding-bottom:58px}
 @media(max-width:640px){.detail-grid{padding-bottom:66px}}
 @media(max-width:640px) and (max-height:660px){.detail-grid{padding-bottom:28px}}
+body.motion-paused .drink-stage,body.motion-paused .detail-heading{animation:none!important}

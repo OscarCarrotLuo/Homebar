@@ -7,13 +7,13 @@
   <meta name="description" content="Sweet、Coffee、Cocktail。六页现代几何动态饮品单。">
   <title>MENU — Sweet / Coffee / Cocktail</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%23e8ed6d'/%3E%3Cpath d='M9 23V9l7 8 7-8v14' fill='none' stroke='%23282925' stroke-width='3'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css?v=details-2">
-  <link rel="stylesheet" href="drink-details.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=menu-simple-1">
+  <link rel="stylesheet" href="drink-details.css?v=5">
   <script src="menu-data.js" defer></script>
   <script src="drink-data.js?v=4" defer></script>
   <script src="drink-art.js?v=3" defer></script>
   <script src="vendor/three.min.js" defer></script>
-  <script src="menu.js?v=details-4" defer></script>
+  <script src="menu.js?v=menu-simple-1" defer></script>
   <script src="geometry.js?v=details-3" defer></script>
   <script src="drink-motion.js?v=1" defer></script>
 </head>
@@ -25,11 +25,11 @@
       <a href="#coffee-1" data-category="coffee">Coffee <sup>03—04</sup></a>
       <a href="#cocktail-1" data-category="cocktail">Cocktail <sup>05—06</sup></a>
     </nav>
-    <button class="motion-toggle" aria-label="暂停动效" aria-pressed="false"><span class="motion-symbol" aria-hidden="true"><i></i><i></i><i></i></span><span class="motion-label">动效开</span></button>
+    <button class="motion-toggle" aria-label="暂停动效" aria-pressed="false"><span class="motion-symbol" aria-hidden="true"><i></i><i></i><i></i></span></button>
   </header>
   <main id="menu" tabindex="-1" aria-label="饮品单"></main>
   <noscript><p class="noscript-note">请启用 JavaScript 查看六页饮品单。</p></noscript>
   <p id="page-status" class="sr-only" role="status" aria-live="polite"></p>
-  <footer class="page-controls"><div class="edition">DRINKS<span class="edition-divider">/</span>饮品单</div><nav class="pagination" aria-label="选择菜单页"><a href="#sweet-1" aria-label="Sweet 第一页" aria-current="page">01</a><a href="#sweet-2" aria-label="Sweet 第二页">02</a><a href="#coffee-1" aria-label="Coffee 第一页">03</a><a href="#coffee-2" aria-label="Coffee 第二页">04</a><a href="#cocktail-1" aria-label="Cocktail 第一页">05</a><a href="#cocktail-2" aria-label="Cocktail 第二页">06</a></nav><div class="page-step"><button class="previous" aria-label="上一页">上一页</button><span class="step-divider"></span><button class="next" aria-label="下一页">下一页</button></div></footer>
+  <footer class="page-controls"><nav class="pagination" aria-label="选择菜单页"><a href="#sweet-1" aria-label="Sweet 第一页" aria-current="page">01</a><a href="#sweet-2" aria-label="Sweet 第二页">02</a><a href="#coffee-1" aria-label="Coffee 第一页">03</a><a href="#coffee-2" aria-label="Coffee 第二页">04</a><a href="#cocktail-1" aria-label="Cocktail 第一页">05</a><a href="#cocktail-2" aria-label="Cocktail 第二页">06</a></nav></footer>
 </body>
 </html>

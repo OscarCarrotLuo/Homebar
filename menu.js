@@ -19,7 +19,7 @@
   const section=document.createElement('section');
   section.id=p.id;section.className=`menu-page ${p.theme} ${p.drinks.length>5?'six-drinks':''}`;
   section.hidden=index!==0;section.setAttribute('aria-labelledby',`title-${p.id}`);
-  section.innerHTML=`<div class="page-eyebrow"><span>${p.category.toUpperCase()} / ${p.number}</span><span>${p.label}</span></div><div class="poster-grid"><div class="poster-art"><h1 id="title-${p.id}">${p.title}<span class="title-stop">.</span></h1><div class="geometry geometry-${p.theme}" aria-hidden="true"><div class="css-art">${artwork[p.theme]}</div></div><div class="art-caption"><span>${p.caption}</span><span class="caption-rule"></span><span>${p.part}</span></div></div><div class="menu-column"><div class="menu-heading"><h2>${p.label}</h2><span>${p.number} — 06</span></div><ol class="drink-list"></ol></div></div>`;
+  section.innerHTML=`<div class="poster-grid"><div class="poster-art"><h1 id="title-${p.id}">${p.title}<span class="title-stop">.</span></h1><div class="geometry geometry-${p.theme}" aria-hidden="true"><div class="css-art">${artwork[p.theme]}</div></div></div><div class="menu-column"><ol class="drink-list"></ol></div></div>`;
   const list=section.querySelector('.drink-list');
   p.drinks.forEach(([name,en],row)=>{
    const li=document.createElement('li'),content=document.createElement('div'),h=document.createElement('h3'),sub=document.createElement('span'),num=document.createElement('span');
@@ -33,7 +33,6 @@
   main.append(section);
  });
  const sections=[...main.querySelectorAll('.menu-page')],pageLinks=[...document.querySelectorAll('.pagination a')],categoryLinks=[...document.querySelectorAll('[data-category]')];
- const previous=document.querySelector('.previous'),next=document.querySelector('.next');
  const detail=document.createElement('article');detail.id='drink-detail';detail.className='drink-detail';detail.hidden=true;main.append(detail);
  const controls=document.querySelector('.page-controls');
  function setTheme(p){
@@ -50,7 +49,6 @@
   document.title=`${p.title} ${p.part} — 饮品单`;
   pageLinks.forEach((a,i)=>i===current?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
   categoryLinks.forEach(a=>a.dataset.category===p.category?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
-  previous.disabled=current===0;next.disabled=current===pages.length-1;
   document.getElementById('page-status').textContent=`${p.title}，${p.label}，第 ${current+1} 页，共 6 页。`;
   window.dispatchEvent(new CustomEvent('menu:page',{detail:{index:current,section:sections[current]}}));
  }
@@ -81,7 +79,6 @@
  function navigateDrink(delta){location.hash=`drink/${drinks[(activeDrink.index+delta+drinks.length)%drinks.length].id}`;}
 
  function navigate(index){if(index>=0&&index<pages.length)location.hash=pages[index].id}
- previous.addEventListener('click',()=>navigate(current-1));next.addEventListener('click',()=>navigate(current+1));
  window.addEventListener('hashchange',()=>{readHash(true);window.scrollTo({top:0,behavior:'instant'})});
  document.addEventListener('keydown',e=>{
   if(e.altKey||e.ctrlKey||e.metaKey||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;
@@ -99,7 +96,7 @@
  function setMotion(value){
   paused=value;document.body.classList.toggle('motion-paused',paused);
   const detailMotion=detail.querySelector('.detail-motion');if(detailMotion){detailMotion.setAttribute('aria-pressed',String(paused));detailMotion.setAttribute('aria-label',paused?'播放动效':'暂停动效');}motionButton.setAttribute('aria-pressed',String(paused));
-  motionButton.setAttribute('aria-label',paused?'播放动效':'暂停动效');motionButton.querySelector('.motion-label').textContent=paused?'动效关':'动效开';
+  motionButton.setAttribute('aria-label',paused?'播放动效':'暂停动效');
   window.dispatchEvent(new CustomEvent('menu:motion',{detail:{paused}}));
  }
  motionButton.addEventListener('click',()=>setMotion(!paused));motionQuery.addEventListener('change',e=>setMotion(e.matches));
