@@ -3,8 +3,6 @@
 .drink-link:before{content:'';position:absolute;inset:0}
 .drink-link>div{min-width:0}
 .drink-number{display:flex;gap:16px;align-items:center}
-.drink-open{font-size:18px;opacity:.65;transition:transform .3s}
-.drink-link:hover .drink-open{transform:translate(2px,-2px)}
 body.detail-mode{display:block;min-height:100svh}
 .detail-mode .masthead{display:none}
 .detail-mode main{display:block;min-height:0}
@@ -37,7 +35,7 @@ body.detail-mode{display:block;min-height:100svh}
 .motion-paused .drink-detail *,.tab-inactive .drink-detail *{animation-play-state:paused!important}
 @media(min-width:641px) and (max-height:650px){.drink-stage{height:290px}.detail-grid{padding-bottom:10px}.detail-ingredients{margin-top:14px}.drink-detail{padding-top:8px;padding-bottom:8px}}
 @media(max-width:640px){
- .drink-link{min-height:44px}.drink-open{font-size:16px}.drink-number{gap:12px}
+ .drink-link{min-height:44px}.drink-number{gap:12px}
  .drink-detail{padding:12px 5vw 14px;min-height:100svh}
  .detail-grid{padding:0 0 25px;justify-content:center}
  .drink-stage{height:clamp(270px,47svh,440px);width:100%;max-width:400px}
@@ -49,27 +47,23 @@ body.detail-mode{display:block;min-height:100svh}
 @media(max-width:640px) and (max-height:660px){.drink-stage{height:260px}.detail-ingredients{margin-top:14px}.detail-grid{padding-bottom:12px}.detail-heading h1{font-size:23px}}
 @media(prefers-reduced-motion:reduce){.drink-detail *{animation:none!important;transition:none!important}}
 @media print{body.detail-mode .masthead,body.detail-mode .detail-topline,body.detail-mode .drink-step{display:none!important}body.detail-mode .menu-page{display:none!important}body.detail-mode .drink-detail{display:flex!important;min-height:0}.drink-detail *{animation:none!important}}
-/* Automatic choreography: a quiet whole glass, a brief opening, then reunion. */
-.drink-object{animation:glass-sway 9s ease-in-out infinite;transform-origin:220px 425px}
-.layered-drink .liquid-layer{animation:layer-unfold 15s cubic-bezier(.45,0,.2,1) infinite;transform-box:view-box}
-.layered-drink .garnish-lift{animation:layer-unfold 15s cubic-bezier(.45,0,.2,1) infinite;transform-box:view-box}
-.layered-drink .drink-glass{animation:glass-reveal 15s ease-in-out infinite}
-.layered-drink .drink-ice,.layered-drink .ceramic-shell,.layered-drink .glass-light{animation:ice-reveal 15s ease-in-out infinite}
-.ice-float{transform-box:fill-box;transform-origin:center;animation:ice-turn 6s ease-in-out infinite;animation-delay:var(--delay,0s)}
-.glass-shimmer{animation:glass-shimmer 7s ease-in-out infinite}
-.fine-shimmer{animation-delay:.17s}
-.single-drink .liquid-surface{animation:cocktail-swirl 5s ease-in-out infinite}
-@keyframes glass-sway{0%,100%{transform:rotate(-1.1deg) translateY(0)}50%{transform:rotate(1.1deg) translateY(-6px)}}
-@keyframes layer-unfold{0%,26%,85%,100%{transform:translateY(0)}43%,64%{transform:translateY(var(--lift))}}
-@keyframes glass-reveal{0%,26%,85%,100%{opacity:1}43%,64%{opacity:.28}}
-@keyframes ice-reveal{0%,26%,85%,100%{opacity:1}43%,64%{opacity:0}}
-@keyframes ice-turn{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(var(--float,-6px)) rotate(var(--turn,6deg))}}
-@keyframes glass-shimmer{0%,12%{transform:translateX(0);opacity:0}24%{opacity:1}58%{transform:translateX(410px);opacity:1}68%,100%{transform:translateX(460px);opacity:0}}
-@keyframes cocktail-swirl{0%,100%{transform:scaleY(1) skewX(-8deg)}50%{transform:scaleY(.7) skewX(8deg)}}
-@media(prefers-reduced-motion:reduce){.drink-detail *{animation:none!important;transition:none!important}}
-
 /* Only one return arrow; drink switching stays available through swipes and keyboard. */
 .detail-grid{padding-bottom:58px}
 @media(max-width:640px){.detail-grid{padding-bottom:66px}}
 @media(max-width:640px) and (max-height:660px){.detail-grid{padding-bottom:28px}}
 body.motion-paused .drink-stage,body.motion-paused .detail-heading{animation:none!important}
+
+/* Ingredient-led titles, with all fonts served from this project. */
+.detail-heading h1{font-family:var(--drink-cn),'PingFang SC','Microsoft YaHei',sans-serif;font-weight:var(--drink-weight,400);font-size:clamp(27px,3.2vw,40px);letter-spacing:var(--drink-tracking,.04em);line-height:1.45}
+.detail-english{font-family:var(--drink-en),Manrope,serif;font-size:clamp(20px,2.3vw,28px);font-weight:var(--drink-en-weight,500);font-style:var(--drink-en-style,normal);letter-spacing:.018em;line-height:1.25;opacity:.8;margin-top:5px}
+.drink-object,.ice-float,.drink-garnish,.liquid-surface,.drink-bubble,.glass-shimmer{animation:none;translate:none}
+.drink-object,.ice-float,.garnish-lift{transform-box:view-box;transform-origin:0 0}
+.signature-back,.signature-liquid,.signature-front,.signature-crown{pointer-events:none}
+[data-fx]{will-change:auto}
+.drink-number{font-variant-numeric:tabular-nums}
+@media(max-width:640px){.detail-heading h1{font-size:clamp(25px,7vw,31px)}.detail-english{font-size:20px}.detail-ingredients{margin-top:18px}.drink-number{gap:10px}}
+@media(max-width:360px){.detail-heading h1{font-size:25px}.detail-english{font-size:18px}}
+
+.detail-ingredients{font-family:var(--drink-cn),'PingFang SC','Microsoft YaHei',sans-serif;font-weight:var(--ingredient-weight,400);font-size:15px;line-height:1.9;opacity:.84;letter-spacing:.035em}
+@media(max-width:640px){.detail-ingredients{font-size:14px;line-height:1.9;letter-spacing:.02em}}
+@media(max-width:360px){.detail-ingredients{font-size:13px}}

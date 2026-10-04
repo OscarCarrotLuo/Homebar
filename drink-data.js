@@ -35,8 +35,8 @@
  {id:'long-island',glass:'tall',flavor:'柑橘微酸 · 可乐尾韵',ingredients:['伏特加','金酒','白朗姆酒','龙舌兰','橙味利口酒','柠檬汁','糖浆','可乐'],layers:[L('柑橘 · 基酒','#c29b4f',.68,[0,1,2,3,4,5,6]),L('可乐','#80502e',.32,[7])],garnish:'lemon',ice:4,fizz:true,source:iba('long-island-iced-tea')},
  {id:'gin-fizz',glass:'tall',flavor:'明亮柠檬 · 细密气泡',ingredients:['金酒','柠檬汁','糖浆','苏打水'],layers:[L('金酒 · 柠檬','#dbe4b6',.90,[0,1,2,3]),L('绵细泡沫','#eff4d6',.10,[3])],garnish:'lemon',ice:0,fizz:true,source:iba('gin-fizz')},
  {id:'old-fashioned',glass:'rocks',flavor:'橡木暖香 · 柑橘苦甜',ingredients:['波本或黑麦威士忌','方糖','安格仕苦精','水','橙皮','鸡尾酒樱桃'],layers:[L('威士忌 · 苦精','#b06a27',1,[0,1,2,3])],garnish:'twist',ice:1,source:iba('old-fashioned')},
- {id:'godfather',glass:'rocks',flavor:'威士忌醇厚 · 杏仁甜香',ingredients:['威士忌','杏仁利口酒'],layers:[L('威士忌 · 杏仁','#af702f',1,[0,1])],ice:1,source:{label:'Disaronno 配方参考',url:'https://disaronno.com/zh-hans/drinks/godfather/'}},
- {id:'negroni',glass:'rocks',flavor:'草本苦韵 · 红橙回甘',ingredients:['金酒','金巴利','甜红味美思','橙片'],layers:[L('金酒 · 金巴利 · 味美思','#bd4c32',1,[0,1,2])],garnish:'orange',ice:1,source:iba('negroni')},
+ {id:'godfather',glass:'rocks',flavor:'威士忌醇厚 · 杏仁甜香',ingredients:['威士忌','杏仁利口酒','肉桂'],layers:[L('威士忌 · 杏仁','#af702f',1,[0,1])],garnish:'cinnamon',ice:1,source:{label:'Disaronno 配方参考',url:'https://disaronno.com/zh-hans/drinks/godfather/'}},
+ {id:'negroni',glass:'rocks',flavor:'草本苦韵 · 红橙回甘',ingredients:['金酒','金巴利','甜红味美思','橙皮'],layers:[L('金酒 · 金巴利 · 味美思','#bd4c32',1,[0,1,2])],garnish:'orange-peel',ice:1,source:iba('negroni')},
  {id:'whiskey-sour',glass:'rocks',flavor:'威士忌暖香 · 柠檬酸甜',ingredients:['波本威士忌','柠檬汁','糖浆','巴氏蛋清（可选）','橙皮','鸡尾酒樱桃'],layers:[L('威士忌 · 柠檬','#d2a85b',.83,[0,1,2]),L('轻盈蛋白泡','#f8e4c2',.17,[3])],garnish:'cherry',ice:3,source:iba('whiskey-sour')},
  {id:'daiquiri',glass:'martini',flavor:'朗姆清香 · 青柠明酸',ingredients:['白朗姆酒','青柠汁','细砂糖'],layers:[L('朗姆 · 青柠','#d5dea6',1,[0,1,2])],ice:0,source:iba('daiquiri')},
  {id:'sweet-martini',glass:'martini',flavor:'杜松草本 · 甜润酒香',ingredients:['金酒','甜红味美思','鸡尾酒樱桃'],layers:[L('金酒 · 甜味美思','#bf885f',1,[0,1])],garnish:'cherry',ice:0,source:{label:'Difford’s Guide 配方参考',url:'https://www.diffordsguide.com/cocktails/recipe/2887/sweet-martini'}}
@@ -69,12 +69,13 @@
   'long-island':['伏特加','金酒','朗姆酒','龙舌兰','橙酒','柠檬','可乐'],
   'gin-fizz':['金酒','柠檬','苏打水'],
   'old-fashioned':['威士忌','苦精','糖'],
-  'godfather':['威士忌','杏仁利口酒'],
-  'negroni':['金酒','金巴利','甜味美思'],
+  'godfather':['威士忌','杏仁利口酒','肉桂'],
+  'negroni':['金酒','金巴利','甜味美思','橙皮'],
   'whiskey-sour':['威士忌','柠檬','糖','蛋白泡'],
   'daiquiri':['朗姆酒','青柠','糖'],
   'sweet-martini':['金酒','甜味美思']
  };
  const menu=window.MENU_PAGES.flatMap((p,pageIndex)=>p.drinks.map(([name,en],row)=>({name,en,pageIndex,row,pageId:p.id,category:p.category})));
- window.DRINK_DETAILS=data.map((d,i)=>({...menu[i],...d,essentials:essentials[d.id],note:d.note||(!d.source?reference:''),index:i}));
+ const numbering={sweet:100,coffee:200,cocktail:300};
+ window.DRINK_DETAILS=data.map((d,i)=>({...menu[i],...d,number:++numbering[menu[i].category],essentials:essentials[d.id],note:d.note||(!d.source?reference:''),index:i}));
 })();

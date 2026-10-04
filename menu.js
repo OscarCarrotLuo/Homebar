@@ -24,10 +24,10 @@
   p.drinks.forEach(([name,en],row)=>{
    const li=document.createElement('li'),content=document.createElement('div'),h=document.createElement('h3'),sub=document.createElement('span'),num=document.createElement('span');
    li.style.setProperty('--row',row);h.textContent=name;sub.className='drink-en';sub.textContent=en;
-   num.className='drink-number';num.textContent=String(row+1).padStart(2,'0');num.setAttribute('aria-hidden','true');
+   num.className='drink-number';num.setAttribute('aria-hidden','true');
    const drink=drinks.find(d=>d.pageIndex===index&&d.row===row),link=document.createElement('a');
    link.href=`#drink/${drink.id}`;link.className='drink-link';link.id=`link-${drink.id}`;link.setAttribute('aria-label',`${name}，查看饮品详情`);
-   num.innerHTML='<span>'+String(row+1).padStart(2,'0')+'</span><span class="drink-open">↗</span>';
+   num.textContent=String(drink.number);
    content.append(h,sub);link.append(content,num);li.append(link);list.append(li);
   });
   main.append(section);
@@ -57,6 +57,9 @@
   sections.forEach(s=>{s.hidden=true;s.classList.remove('is-active')});controls.hidden=true;
   document.body.classList.add('detail-mode');setTheme(p);detail.hidden=false;
   detail.setAttribute('aria-labelledby','drink-title');
+  const personality=window.DRINK_PERSONALITIES[d.id];detail.dataset.drink=d.id;detail.dataset.signature=personality.signature;
+  const props={'--drink-cn':`"${personality.cn}"`,'--drink-en':`"${personality.en}"`,'--drink-weight':personality.weight,'--drink-tracking':personality.tracking,'--drink-en-style':personality.enStyle,'--drink-en-weight':personality.enWeight,'--ingredient-weight':personality.cn==='Noto Serif SC'?500:400};
+  Object.entries(props).forEach(([key,value])=>detail.style.setProperty(key,value));
   detail.innerHTML=`<nav class="detail-topline" aria-label="饮品详情导航"><a class="back-to-menu" href="#${p.id}" aria-label="返回酒单"><span aria-hidden="true">←</span></a><button class="detail-motion" type="button" aria-pressed="${paused}" aria-label="${paused?'播放动效':'暂停动效'}"><span class="motion-symbol" aria-hidden="true"><i></i><i></i><i></i></span></button></nav>
   <div class="detail-grid">
    <figure class="drink-stage" data-glass="${d.glass}">${window.renderDrinkArt(d)}</figure>

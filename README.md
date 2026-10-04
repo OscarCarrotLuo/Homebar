@@ -32,16 +32,19 @@
 每款详情仅展示程序绘制的动态杯身、中英文名称和主要用料。沿用所属菜单的配色；手机和 iPad 竖屏均采用居中布局。仅保留一个返回箭头与暂停动效图标，没有用量、制作步骤或额外说明。
 
 - 32 个独立地址，例如 `index.html#drink/moscow`，可刷新、分享与浏览器前进 / 后退。
-- 侧视图由本地 SVG 代码绘制，呈现对应杯型、奶盖、液体层次、冰块与气泡；液面连续流动，分层饮品会自动舒展并合拢，不依赖照片或外部素材。
+- 侧视图由本地 SVG 代码绘制，呈现对应杯型、奶盖、液体层次、冰块与气泡；32 款各有独立的运动主题，如桂花流沙、浓缩咖啡渗入椰奶、薄荷翻卷、汤力气泡双螺旋、琥珀折光，不依赖照片或外部素材。
+- 中英文标题与配料字体按饮品特征搭配；字体随项目本地保存。配料使用对应中文字体，并单独优化小字号的字重与行距。
+- `drink-personalities.js` 定义各款字体与运动节奏；`drink-signatures.js` 绘制独立动效构成；`drink-motion.js` 以最高 30 fps 驱动当前详情页，离开详情、切到后台或暂停时停止。
 - 返回时恢复原菜单页与饮品焦点；详情页左右滑动或使用方向键切换饮品，Esc 返回菜单。
 - `drink-data.js` 的 `essentials` 保存页面显示的核心用料（数量按实际组成，不限制为两三项），`ingredients` 保留核对资料，其他字段为视觉设置，顺序对应 `menu-data.js` 的 32 款饮品。其中 layer 的 weight 只是绘图比例，不是调制用量。
-- 甜饮与咖啡以项目内已确认的用料和杯型为基础；未确认部分是用料参考，不视为店内最终配方。Moscow 保持咖啡、牛奶、奶油、巧克力粉的版本，中文为「莫斯科」。
+- 甜饮与咖啡以项目内已确认的用料和杯型为基础；未确认部分是用料参考，不视为店内最终配方。Moscow 保持咖啡、牛奶、奶油、巧克力粉的版本，中文为「莫斯科」。教父按用户版本加入肉桂，并绘制部分浸入酒液、带卷纹的肉桂棒；尼格罗尼使用橙皮。
 
 配方资料仅用于核对原料，不在页面增加说明文字。经典鸡尾酒参考 [IBA](https://iba-world.com/cocktails/)、[Tanqueray](https://www.tanqueray.com/en-gb/cocktails/gin-and-tonic-tanqueray-london-dry)、[Disaronno](https://disaronno.com/zh-hans/drinks/godfather/) 与 [Difford’s Guide](https://www.diffordsguide.com/cocktails/recipe/2887/sweet-martini)，每款来源保存在 `drink-data.js`。小红书搜索需要登录，未能核实其浏览 / 点赞排名，未声称采用高赞笔记。
 
 ## 使用方式
 
 - 点击顶部分类或底部六个页码；主界面已移除重复分类说明、装饰编号、动效文字与上一页 / 下一页按钮。
+- 饮品编号跨页连续：Sweet 为 101–111，Coffee 为 201–210，Cocktail 为 301–311；编号旁没有箭头，整行仍可点击。
 - 键盘左右方向键翻页，手机左右滑动翻页。
 - 鼠标移动会产生轻微三维视差；悬停饮品名会略微提升对应几何运动速度。
 - 顶部按钮可以暂停动效；系统“减少动态效果”偏好会默认关闭动效。
@@ -79,11 +82,15 @@ menu-data.js            32 款饮品与页面配色
 menu.js                 菜单与详情渲染、哈希路由、导航和动效开关
 drink-data.js           32 款饮品用料、杯型、颜色与配方参考
 drink-art.js            程序绘制的 SVG 饮品侧视图
-drink-motion.js         自动液面波动，随暂停和页面切换启停
+drink-personalities.js  每款字体、运动主题与节奏
+drink-signatures.js     32 套与饮品特征相关的动效构成
+drink-motion.js         自动材质与流体运动，随暂停和页面切换启停
+drink-fonts.css         本地中英文字体定义
 drink-details.css       极简详情页、手机和 iPad 响应式样式
 geometry.js             六套程序化三维几何场景
 styles.css              独立主题、响应式和 CSS 降级动效
 fonts/                  本地 Manrope 字体和 OFL 许可
+fonts/detail/           详情字体子集、各字体 OFL 许可与来源记录
 vendor/three.min.js      本地 Three.js 0.160.0
 vendor/THREE-LICENSE.txt Three.js MIT 许可
 .nojekyll               GitHub Pages 静态资源配置
@@ -94,5 +101,6 @@ README.md               本说明
 
 - Three.js 0.160.0：MIT，许可随 `vendor/THREE-LICENSE.txt` 提供。
 - Manrope：SIL Open Font License 1.1，许可随 `fonts/OFL.txt` 提供。
+- 详情页使用 Noto Serif SC、Ma Shan Zheng、ZCOOL KuaiLe、ZCOOL QingKe HuangYou、Fraunces、Cormorant Garamond、Space Grotesk、Bebas Neue、Caveat。对应 OFL 许可与下载来源均位于 `fonts/detail/`。中文字体按现有标题与核心用料裁切；新增汉字时请更新子集，否则会使用系统后备字体。
 
 采用经典脚本形式以兼容直接双击本地 HTML，不需要启用开发服务器。首次加载时 Three.js 可能输出其经典脚本版本的弃用提示，不影响本地功能。
