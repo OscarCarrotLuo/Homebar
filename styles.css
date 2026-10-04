@@ -154,34 +154,53 @@ main{position:relative;min-height:calc(100svh - 166px);outline:none}
  .drink-list li{padding-top:28px;padding-bottom:28px}.six-drinks .drink-list li{padding-top:22px;padding-bottom:22px}
  .cocktail-one .drink-list li{padding-top:27px;padding-bottom:27px}.art-caption{margin-bottom:30px}
 }
-/* Phones: one continuous poster, large touch controls and freely wrapping drink names. */
-@media(max-width:640px){
- .masthead{height:auto;min-height:113px;padding:14px 6vw 10px;flex-wrap:wrap;gap:10px}
- .wordmark{font-size:26px}.wordmark-cn{display:inline;font-size:12px;margin-left:14px}
- .motion-toggle{order:1;font-size:12px}.categories{order:2;width:100%;justify-content:space-between;gap:16px}
- .categories>a{font-size:16px;padding:9px 0}.categories sup{display:inline;font-size:9px;margin-left:5px}
- .menu-page{padding:20px 6vw 27px;min-height:0}.page-eyebrow{font-size:10px;letter-spacing:1.5px}
- main{min-height:0}.poster-grid,.sweet-two .poster-grid,.coffee-two .poster-grid{display:flex;flex-direction:column;min-height:0;gap:0}
- .poster-art,.sweet-two .poster-art,.coffee-two .poster-art{order:0;height:340px;flex:none}
- .poster-art h1{font-size:clamp(82px,24vw,133px);line-height:1.04;margin:17px 0 0 -5px;letter-spacing:-.085em}
- .sweet-two .poster-art h1{font-size:21vw}.coffee-one .poster-art h1{font-size:25vw}
- .coffee-two .poster-art h1{font-size:23vw}.cocktail-one .poster-art h1{font-size:18.3vw}.cocktail-two .poster-art h1{font-size:20vw}
- .geometry{position:absolute;inset:76px -25px 30px;min-height:0;z-index:0;margin:0}
- .art-caption{position:absolute;bottom:0;left:0;right:0;font-size:10px;letter-spacing:1.2px;margin:0;gap:17px;min-height:20px}
- .menu-column,.sweet-two .menu-column,.coffee-two .menu-column{order:1;padding:28px 0 0}
- .menu-heading{padding-bottom:16px}.menu-heading h2{font-size:15px;letter-spacing:3px}
- .drink-list li,.six-drinks .drink-list li{padding-top:18px;padding-bottom:18px;gap:10px}
- .drink-list h3{font-size:21px;letter-spacing:.045em;line-height:1.4}.drink-en{font-size:12px;line-height:1.5;opacity:.75}
- .drink-number{font-size:12px}.sweet-two .drink-list li,.coffee-two .drink-list li{padding-left:14px;padding-right:14px}
- .cocktail-one .drink-list li{padding:18px}.cocktail-one .drink-number{font-size:23px}.cocktail-two .drink-number{font-size:20px}
- .page-controls{flex-wrap:wrap;justify-content:center;gap:12px;padding:16px 6vw max(18px,env(safe-area-inset-bottom))}
- .edition{display:none}.pagination{justify-content:space-between;width:100%;gap:0}.pagination a{flex:1;width:auto;height:46px;min-width:0;font-size:14px}
- .page-step{width:100%;justify-content:space-between}.page-step button{font-size:13px;padding:0;min-height:44px}.step-divider{display:none}
- .wire-orb{width:210px;left:20%;top:0}.orbit-a{right:5%;width:60px;height:60px}.orbit-b{width:38px;height:38px;left:8%}
- .roast-rings{width:210px;height:210px;left:21%;top:0}.layer{height:40px;top:calc(var(--i)*18px)}
- .brew-line{height:17px;top:calc(var(--i)*17px)}.stir-circle{width:70px;height:70px;left:42%}
+/* Phones fit the small viewport, including when Safari's toolbars are expanded.
+   Intrinsic row heights still allow scrolling with enlarged text or very short screens. */
+@media screen and (max-width:640px){
+ body{min-height:100svh;display:grid;grid-template-rows:auto 1fr auto}
+ .masthead{height:auto;min-height:0;padding:0 4.5vw;display:grid;grid-template-columns:1fr auto;gap:0}
+ .wordmark{grid-column:1;grid-row:1;font-size:24px}.wordmark-cn{display:inline;font-size:10px;margin-left:12px}
+ .motion-toggle{grid-column:2;grid-row:1;font-size:11px;min-height:44px}.categories{grid-column:1 / -1;grid-row:2;width:100%;justify-content:space-between;gap:12px}
+ .categories>a{font-size:14px;min-height:40px;padding:9px 0}.categories sup{display:inline;font-size:8px;margin-left:4px}
+ main{min-height:0;display:flex}
+ .menu-page{width:100%;padding:8px 4.5vw 10px;min-height:0;display:flex;flex-direction:column;overflow:visible}
+ .page-eyebrow{font-size:9px;letter-spacing:1.2px;line-height:16px}
+ .poster-grid,.sweet-two .poster-grid,.coffee-two .poster-grid{display:grid;grid-template-columns:1fr;grid-template-rows:minmax(92px,1fr) auto;min-height:0;gap:8px;flex:1;width:100%}
+ .poster-art,.sweet-two .poster-art,.coffee-two .poster-art{order:0;height:auto;min-height:92px;justify-content:center;padding-bottom:20px}
+ .poster-art h1{font-size:clamp(48px,15vw,80px);line-height:1.08;margin:0 0 0 -3px;letter-spacing:-.085em}
+ .sweet-two .poster-art h1{font-size:14vw}.coffee-one .poster-art h1{font-size:15.5vw}
+ .coffee-two .poster-art h1{font-size:14.5vw}.cocktail-one .poster-art h1{font-size:12vw}.cocktail-two .poster-art h1{font-size:13vw}
+ .geometry{position:absolute;inset:0 -10px 18px 51%;min-height:0;z-index:0;margin:0;overflow:hidden}
+ .art-caption{position:absolute;bottom:0;left:0;right:0;font-size:8px;letter-spacing:1px;margin:0;gap:12px;min-height:14px}
+ .menu-column,.sweet-two .menu-column,.coffee-two .menu-column{order:1;padding:0}
+ .menu-page .menu-heading{padding:5px 0 7px;margin-bottom:0}
+ .sweet-two .menu-heading,.coffee-two .menu-heading{padding-left:12px;padding-right:12px}
+ .menu-heading h2{font-size:12px;letter-spacing:2px}.menu-heading>span{font-size:10px}
+ .menu-page .drink-list li{padding:7px 0;gap:10px}
+ .menu-page.six-drinks .drink-list li{padding-top:5px;padding-bottom:5px}
+ .drink-list h3{font-size:18px;letter-spacing:.035em;line-height:1.35;margin-bottom:1px}
+ .coffee-one .drink-list h3{letter-spacing:.05em}.drink-en{font-size:11px;line-height:1.35;opacity:.75}
+ .drink-number{font-size:10px;padding-top:3px}
+ .sweet-two .drink-list li,.coffee-two .drink-list li,.cocktail-one .drink-list li,.cocktail-two .drink-list li{padding-left:12px;padding-right:12px}
+ .cocktail-one .drink-number{font-size:20px}.cocktail-two .drink-number{font-size:18px}
+ .page-controls{min-height:0;display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:6px;padding:7px 4.5vw max(8px,env(safe-area-inset-bottom))}
+ .edition{display:none}.pagination{grid-column:2;grid-row:1;width:100%;gap:0}
+ .pagination a{flex:1;width:auto;height:44px;min-width:0;font-size:12px}
+ .page-step{display:contents}.page-step button{grid-row:1;font-size:0;padding:0;min-height:44px;letter-spacing:0}
+ .previous{grid-column:1}.next{grid-column:3}.previous:after{content:'←';font-size:22px}.next:after{content:'→';font-size:22px}.step-divider{display:none}
+ .wire-orb{width:100px;left:20%;top:12%}.orbit-a{right:5%;width:35px;height:35px}.orbit-b{width:24px;height:24px;left:8%}
+ .satellite{width:16px;height:16px}.fruit-disc,.sun-disc{width:65px;height:65px}.square-float,.brew-square{width:32px;height:32px}
+ .roast-rings{width:100px;height:100px;left:21%;top:12%}.roast-ring{inset:calc(var(--i)*3px);border-width:2px}.roast-dot{width:18px;height:18px}
+ .layer{height:20px;top:calc(var(--i)*9px)}.brew-line{height:9px;top:calc(var(--i)*9px)}.stir-circle{width:35px;height:35px;left:42%}
 }
-@media(max-width:360px){.categories sup{display:none}.drink-list h3{font-size:19px}.poster-art{height:310px}.geometry{inset:66px -20px 30px}.menu-heading h2{letter-spacing:2px}}
+@media screen and (max-width:640px) and (max-height:600px){
+ .poster-grid,.sweet-two .poster-grid,.coffee-two .poster-grid{grid-template-rows:minmax(68px,1fr) auto;gap:5px}
+ .poster-art,.sweet-two .poster-art,.coffee-two .poster-art{min-height:68px}
+ .menu-page .drink-list li,.menu-page.six-drinks .drink-list li{padding-top:3px;padding-bottom:3px}
+ .menu-page.six-drinks .drink-list li{padding-top:2px;padding-bottom:2px}
+ .drink-list h3{font-size:17px}.menu-page{padding-top:5px;padding-bottom:6px}
+}
+@media screen and (max-width:360px){.categories sup{display:none}.wordmark-cn{letter-spacing:2px}.page-controls{padding-left:3vw;padding-right:3vw;gap:3px}}
 /* Accessible enlarged text and short landscape screens remain scrollable. */
 @media(min-width:641px) and (max-height:600px){.poster-grid{min-height:430px}.menu-page{min-height:0}.poster-art h1{font-size:95px}.cocktail-one .poster-art h1,.cocktail-two .poster-art h1{font-size:75px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
