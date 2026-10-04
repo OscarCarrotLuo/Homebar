@@ -1,6 +1,6 @@
 # MENU — 现代几何动态饮品单
 
-六页独立视觉风格，32 款正式饮品。仅中英文饮品文字，无饮品图片、无价格。
+六页独立视觉风格，32 款正式饮品。菜单仅展示中英文饮品名称，不设价格；点击任一饮品可进入简洁的动态详情页。
 
 ## 在线访问
 
@@ -26,6 +26,18 @@
 | Cocktail 02 | 6 款经典短饮 | 酒红底色、铜色放射薄片与环绕运动 |
 
 三维构成由代码实时生成，没有照片、外部模型或贴图。甜饮与咖啡名称及鸡尾酒列表按项目「生成饮品照片素材」对话最终要求核对；英文为菜单用译名。
+
+## 饮品详情
+
+每款详情仅展示程序绘制的动态杯身、中英文名称和主要用料。沿用所属菜单的配色；手机和 iPad 竖屏均采用居中布局。仅保留一个返回箭头与暂停动效图标，没有用量、制作步骤或额外说明。
+
+- 32 个独立地址，例如 `index.html#drink/moscow`，可刷新、分享与浏览器前进 / 后退。
+- 侧视图由本地 SVG 代码绘制，呈现对应杯型、奶盖、液体层次、冰块与气泡；液面连续流动，分层饮品会自动舒展并合拢，不依赖照片或外部素材。
+- 返回时恢复原菜单页与饮品焦点；详情页左右滑动或使用方向键切换饮品，Esc 返回菜单。
+- `drink-data.js` 的 `essentials` 保存页面显示的核心用料（数量按实际组成，不限制为两三项），`ingredients` 保留核对资料，其他字段为视觉设置，顺序对应 `menu-data.js` 的 32 款饮品。其中 layer 的 weight 只是绘图比例，不是调制用量。
+- 甜饮与咖啡以项目内已确认的用料和杯型为基础；未确认部分是用料参考，不视为店内最终配方。Moscow 保持咖啡、牛奶、奶油、巧克力粉的版本，中文为「莫斯科」。
+
+配方资料仅用于核对原料，不在页面增加说明文字。经典鸡尾酒参考 [IBA](https://iba-world.com/cocktails/)、[Tanqueray](https://www.tanqueray.com/en-gb/cocktails/gin-and-tonic-tanqueray-london-dry)、[Disaronno](https://disaronno.com/zh-hans/drinks/godfather/) 与 [Difford’s Guide](https://www.diffordsguide.com/cocktails/recipe/2887/sweet-martini)，每款来源保存在 `drink-data.js`。小红书搜索需要登录，未能核实其浏览 / 点赞排名，未声称采用高赞笔记。
 
 ## 使用方式
 
@@ -64,7 +76,11 @@
 ```text
 index.html              网页入口
 menu-data.js            32 款饮品与页面配色
-menu.js                 六页渲染、导航和动效开关
+menu.js                 菜单与详情渲染、哈希路由、导航和动效开关
+drink-data.js           32 款饮品用料、杯型、颜色与配方参考
+drink-art.js            程序绘制的 SVG 饮品侧视图
+drink-motion.js         自动液面波动，随暂停和页面切换启停
+drink-details.css       极简详情页、手机和 iPad 响应式样式
 geometry.js             六套程序化三维几何场景
 styles.css              独立主题、响应式和 CSS 降级动效
 fonts/                  本地 Manrope 字体和 OFL 许可

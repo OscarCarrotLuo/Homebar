@@ -111,15 +111,15 @@
   renderer.setSize(width,height,false);const ratio=width/height,h=ratio<1.12?2.72/ratio:2.66;
   camera.left=-h*ratio;camera.right=h*ratio;camera.top=h;camera.bottom=-h;camera.updateProjectionMatrix();render();
  }
- function render(){if(!host||document.hidden)return;scenes[active].tick(elapsed);root.rotation.set(smooth.y*.16,smooth.x*.28,0);renderer.render(scene,camera)}
+ function render(){if(!host||document.hidden||document.body.classList.contains('detail-mode'))return;scenes[active].tick(elapsed);root.rotation.set(smooth.y*.16,smooth.x*.28,0);renderer.render(scene,camera)}
  function loop(time){
-  frame=undefined;if(paused||document.hidden)return;
+  frame=undefined;if(paused||document.hidden||document.body.classList.contains('detail-mode'))return;
   const dt=previous?Math.min((time-previous)/1000,.045):0;previous=time;
   hoverEnergy+=(targetEnergy-hoverEnergy)*.04;elapsed+=dt*(1+hoverEnergy*.4);
   smooth.x+=(pointer.x-smooth.x)*.045;smooth.y+=(pointer.y-smooth.y)*.045;
   render();frame=requestAnimationFrame(loop);
  }
- function run(){if(frame)cancelAnimationFrame(frame);frame=undefined;previous=0;render();if(!paused&&!document.hidden)frame=requestAnimationFrame(loop)}
+ function run(){if(frame)cancelAnimationFrame(frame);frame=undefined;previous=0;render();if(!paused&&!document.hidden&&!document.body.classList.contains('detail-mode'))frame=requestAnimationFrame(loop)}
  const observer=new ResizeObserver(size);
  function activate(index,section){
   if(host){observer.unobserve(host);host.classList.remove('has-webgl')}
@@ -128,6 +128,7 @@
   pointer={x:0,y:0};smooth={x:0,y:0};observer.observe(host);size();run();
  }
  window.addEventListener('menu:page',e=>activate(e.detail.index,e.detail.section));
+ window.addEventListener('menu:detail',run);
  window.addEventListener('menu:motion',e=>{paused=e.detail.paused;run()});
  window.addEventListener('pointermove',e=>{if(paused||!host)return;const r=host.getBoundingClientRect();pointer.x=Math.max(-1,Math.min(1,(e.clientX-r.left)/r.width*2-1));pointer.y=Math.max(-1,Math.min(1,(e.clientY-r.top)/r.height*2-1))},{passive:true});
  document.addEventListener('pointerout',e=>{if(!e.relatedTarget)pointer={x:0,y:0}});
@@ -135,5 +136,5 @@
  document.addEventListener('visibilitychange',run);
  renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();paused=true;if(frame)cancelAnimationFrame(frame);host?.classList.remove('has-webgl')});
  renderer.domElement.addEventListener('webglcontextrestored',()=>{host?.classList.add('has-webgl');paused=document.body.classList.contains('motion-paused');run()});
- const initial=document.querySelector('.menu-page:not([hidden])');activate(window.MENU_PAGES.findIndex(p=>p.id===initial.id),initial);
+ const initial=document.querySelector('.menu-page:not([hidden])');if(initial)activate(window.MENU_PAGES.findIndex(p=>p.id===initial.id),initial);
 })();

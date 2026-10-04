@@ -1,0 +1,74 @@
+/* A quiet detail: one glass, its name, its ingredients. */
+.drink-link{display:flex;width:100%;align-items:center;justify-content:space-between;gap:16px;min-width:0}
+.drink-link:before{content:'';position:absolute;inset:0}
+.drink-link>div{min-width:0}
+.drink-number{display:flex;gap:16px;align-items:center}
+.drink-open{font-size:18px;opacity:.65;transition:transform .3s}
+.drink-link:hover .drink-open{transform:translate(2px,-2px)}
+body.detail-mode{display:block;min-height:100svh}
+.detail-mode .masthead{display:none}
+.detail-mode main{display:block;min-height:0}
+.drink-detail{display:flex;flex-direction:column;min-height:100svh;padding:16px 5vw 20px;max-width:1500px;margin:auto}
+.detail-topline{display:flex;align-items:center;justify-content:space-between;flex:none}
+.back-to-menu,.detail-motion{display:grid;place-items:center;width:44px;height:44px}
+.back-to-menu{font-size:29px;font-weight:400;line-height:1}
+.detail-motion{opacity:.55}
+.detail-grid{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;min-height:0;padding:0 0 26px}
+.drink-stage{margin:0;width:min(480px,100%);height:clamp(300px,57svh,560px);flex:none;animation:detail-appear .65s both}
+.drink-illustration{display:block;width:100%;height:100%;overflow:visible}
+.drink-object{transform-origin:220px 258px;animation:drink-breathe 9s ease-in-out infinite}
+.detail-heading{text-align:center;max-width:100%;padding:0 8px;animation:detail-appear .65s both}
+.detail-heading h1{font-size:clamp(23px,2.8vw,34px);font-weight:500;letter-spacing:.06em;line-height:1.4;margin:0;outline:none;text-wrap:balance}
+.detail-english{font-size:14px;line-height:1.5;letter-spacing:.035em;margin:6px 0 0;opacity:.65}
+.detail-ingredients{font-size:13px;line-height:2;letter-spacing:.03em;max-width:620px;text-align:center;margin:22px 0 0;text-wrap:balance;opacity:.76}
+.ingredient-name{display:inline-block}
+.ingredient-separator{margin:0 4px;opacity:.5}
+.drink-step{display:flex;justify-content:space-between;align-items:center;flex:none;width:100%;padding:0 5px}
+.drink-step a{display:grid;place-items:center;min-width:44px;min-height:44px;font-size:25px;opacity:.5;transition:opacity .2s}
+.drink-step a:hover,.detail-motion:hover{opacity:1}
+.ice-float,.drink-garnish{animation:ice-drift 5s ease-in-out infinite;animation-delay:var(--delay,0s)}
+.drink-bubble{animation:bubble-rise var(--duration,4s) linear infinite;animation-delay:var(--delay)}
+.liquid-surface{animation:surface-pulse 4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes detail-appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes drink-breathe{50%{transform:translateY(-3px)}}
+@keyframes ice-drift{50%{translate:0 var(--float,-4px)}}
+@keyframes surface-pulse{50%{transform:scaleY(.85)}}
+@keyframes bubble-rise{0%{transform:translateY(0);opacity:0}12%{opacity:.7}85%{opacity:.4}100%{transform:translateY(var(--rise,-220px));opacity:0}}
+.motion-paused .drink-detail *,.tab-inactive .drink-detail *{animation-play-state:paused!important}
+@media(min-width:641px) and (max-height:650px){.drink-stage{height:290px}.detail-grid{padding-bottom:10px}.detail-ingredients{margin-top:14px}.drink-detail{padding-top:8px;padding-bottom:8px}}
+@media(max-width:640px){
+ .drink-link{min-height:44px}.drink-open{font-size:16px}.drink-number{gap:12px}
+ .drink-detail{padding:12px 5vw 14px;min-height:100svh}
+ .detail-grid{padding:0 0 25px;justify-content:center}
+ .drink-stage{height:clamp(270px,47svh,440px);width:100%;max-width:400px}
+ .detail-heading h1{font-size:clamp(23px,6.5vw,30px);letter-spacing:.045em}
+ .detail-english{font-size:12px;margin-top:5px;letter-spacing:.025em}
+ .detail-ingredients{font-size:12px;line-height:2.1;margin-top:20px;max-width:340px;letter-spacing:0}
+ .ingredient-separator{margin:0 2px}
+}
+@media(max-width:640px) and (max-height:660px){.drink-stage{height:260px}.detail-ingredients{margin-top:14px}.detail-grid{padding-bottom:12px}.detail-heading h1{font-size:23px}}
+@media(prefers-reduced-motion:reduce){.drink-detail *{animation:none!important;transition:none!important}}
+@media print{body.detail-mode .masthead,body.detail-mode .detail-topline,body.detail-mode .drink-step{display:none!important}body.detail-mode .menu-page{display:none!important}body.detail-mode .drink-detail{display:flex!important;min-height:0}.drink-detail *{animation:none!important}}
+/* Automatic choreography: a quiet whole glass, a brief opening, then reunion. */
+.drink-object{animation:glass-sway 9s ease-in-out infinite;transform-origin:220px 425px}
+.layered-drink .liquid-layer{animation:layer-unfold 15s cubic-bezier(.45,0,.2,1) infinite;transform-box:view-box}
+.layered-drink .garnish-lift{animation:layer-unfold 15s cubic-bezier(.45,0,.2,1) infinite;transform-box:view-box}
+.layered-drink .drink-glass{animation:glass-reveal 15s ease-in-out infinite}
+.layered-drink .drink-ice,.layered-drink .ceramic-shell,.layered-drink .glass-light{animation:ice-reveal 15s ease-in-out infinite}
+.ice-float{transform-box:fill-box;transform-origin:center;animation:ice-turn 6s ease-in-out infinite;animation-delay:var(--delay,0s)}
+.glass-shimmer{animation:glass-shimmer 7s ease-in-out infinite}
+.fine-shimmer{animation-delay:.17s}
+.single-drink .liquid-surface{animation:cocktail-swirl 5s ease-in-out infinite}
+@keyframes glass-sway{0%,100%{transform:rotate(-1.1deg) translateY(0)}50%{transform:rotate(1.1deg) translateY(-6px)}}
+@keyframes layer-unfold{0%,26%,85%,100%{transform:translateY(0)}43%,64%{transform:translateY(var(--lift))}}
+@keyframes glass-reveal{0%,26%,85%,100%{opacity:1}43%,64%{opacity:.28}}
+@keyframes ice-reveal{0%,26%,85%,100%{opacity:1}43%,64%{opacity:0}}
+@keyframes ice-turn{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(var(--float,-6px)) rotate(var(--turn,6deg))}}
+@keyframes glass-shimmer{0%,12%{transform:translateX(0);opacity:0}24%{opacity:1}58%{transform:translateX(410px);opacity:1}68%,100%{transform:translateX(460px);opacity:0}}
+@keyframes cocktail-swirl{0%,100%{transform:scaleY(1) skewX(-8deg)}50%{transform:scaleY(.7) skewX(8deg)}}
+@media(prefers-reduced-motion:reduce){.drink-detail *{animation:none!important;transition:none!important}}
+
+/* Only one return arrow; drink switching stays available through swipes and keyboard. */
+.detail-grid{padding-bottom:58px}
+@media(max-width:640px){.detail-grid{padding-bottom:66px}}
+@media(max-width:640px) and (max-height:660px){.detail-grid{padding-bottom:28px}}
