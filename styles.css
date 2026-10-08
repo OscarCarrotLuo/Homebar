@@ -1,3 +1,4 @@
+@font-face{font-family:'JG Friends Sans';src:url('fonts/brand/JGFriendsSans-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
 @font-face{font-family:Manrope;src:url('fonts/Manrope-Medium.ttf') format('truetype');font-weight:400 600;font-display:swap}
 @font-face{font-family:Manrope;src:url('fonts/Manrope-ExtraBold.ttf') format('truetype');font-weight:700 900;font-display:swap}
 :root{font-family:Manrope,'PingFang SC','Microsoft YaHei',sans-serif;color:#292b27;background:#d9d9ce;--page:#d9d9ce;--ink:#292b27;--accent:#ecec75;--line:rgba(41,43,39,.25);font-synthesis:none}
@@ -11,9 +12,15 @@ button:focus-visible,a:focus-visible{outline:2px solid currentColor;outline-offs
 [hidden]{display:none!important}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .masthead{height:88px;padding:0 4.2vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:28px}
-.wordmark{font-size:28px;font-weight:800;letter-spacing:-2px;display:flex;align-items:center;white-space:nowrap}
-.wordmark-e{display:inline-block;transform:scaleX(-1)}
-.wordmark-cn{font-size:12px;font-weight:400;letter-spacing:3px;margin-left:18px}
+.brand{display:flex;align-items:center;gap:12px;white-space:nowrap;min-height:44px}
+.brand svg{display:block;overflow:visible}
+.brand-mark svg{height:25px;width:auto}
+.logo-word{display:block;font-family:'JG Friends Sans','PingFang SC',sans-serif;font-weight:700;font-size:23px;line-height:1.15;letter-spacing:.09em;white-space:nowrap}
+.brand-word{display:flex;align-items:center}
+.brand-tag{font-size:8.5px;font-weight:600;letter-spacing:.24em;line-height:1.25;padding-left:12px;border-left:1px solid var(--line);opacity:.7}
+.logo-ring{fill:none;stroke:currentColor;stroke-width:2.4;transition:transform .5s cubic-bezier(.3,1.5,.5,1)}
+.logo-lens{fill:var(--accent);transition:fill .65s,transform .5s cubic-bezier(.3,1.5,.5,1);transform-box:fill-box;transform-origin:center}
+.brand:hover .logo-ring-a{transform:translateX(-2.5px)}.brand:hover .logo-ring-b{transform:translateX(2.5px)}.brand:hover .logo-lens{transform:scale(.55)}
 .categories{display:flex;align-items:center;gap:40px}
 .categories>a{font-size:16px;padding:13px 0;position:relative;opacity:.58;transition:opacity .2s}
 .categories>a:hover,.categories>a[aria-current]{opacity:1}
@@ -21,9 +28,6 @@ button:focus-visible,a:focus-visible{outline:2px solid currentColor;outline-offs
 .categories>a[aria-current]:after{transform:scaleX(1)}
 .categories sup{font-size:10px;letter-spacing:.03em;margin-left:6px;vertical-align:super}
 .motion-toggle{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:1px;min-height:44px;padding:8px 0}
-.motion-symbol{display:flex;height:17px;gap:3px;align-items:center}
-.motion-symbol i{width:2px;height:15px;background:currentColor;animation:equalize 1.6s ease-in-out infinite alternate}
-.motion-symbol i:nth-child(2){animation-delay:-.6s;height:9px}.motion-symbol i:nth-child(3){animation-delay:-1.2s;height:12px}
 main{position:relative;min-height:calc(100svh - 166px);outline:none}
 .menu-page{padding:20px 4.2vw 24px;min-height:calc(100svh - 166px);position:relative;overflow:hidden}
 .page-eyebrow{display:flex;justify-content:space-between;font-size:12px;letter-spacing:2px;line-height:20px}
@@ -138,7 +142,7 @@ main{position:relative;min-height:calc(100svh - 166px);outline:none}
  .page-controls{min-height:70px;padding-top:9px;padding-bottom:9px}
 }
 @media(min-width:641px) and (max-width:1000px){
- .masthead{padding-left:4vw;padding-right:4vw;gap:16px}.wordmark-cn{display:none}.categories{gap:25px}.categories sup{display:none}
+ .masthead{padding-left:4vw;padding-right:4vw;gap:16px}.brand-tag{display:none}.categories{gap:25px}.categories sup{display:none}
  .menu-page{padding-left:4vw;padding-right:4vw}.poster-grid{gap:5vw;grid-template-columns:.92fr 1fr}
  .sweet-two .poster-grid,.coffee-two .poster-grid{grid-template-columns:1fr .92fr}
  .poster-art h1{font-size:12vw}.sweet-two .poster-art h1,.coffee-two .poster-art h1{font-size:9.6vw}
@@ -159,7 +163,7 @@ main{position:relative;min-height:calc(100svh - 166px);outline:none}
 @media screen and (max-width:640px){
  body{min-height:100svh;display:grid;grid-template-rows:auto 1fr auto}
  .masthead{height:auto;min-height:0;padding:0 4.5vw;display:grid;grid-template-columns:1fr auto;gap:0}
- .wordmark{grid-column:1;grid-row:1;font-size:24px}.wordmark-cn{display:inline;font-size:10px;margin-left:12px}
+ .brand{grid-column:1;grid-row:1;gap:10px}.brand-mark svg{height:22px}.brand-word .logo-word{font-size:20px}
  .motion-toggle{grid-column:2;grid-row:1;font-size:11px;min-height:44px}.categories{grid-column:1 / -1;grid-row:2;width:100%;justify-content:space-between;gap:12px}
  .categories>a{font-size:14px;min-height:40px;padding:9px 0}.categories sup{display:inline;font-size:8px;margin-left:4px}
  main{min-height:0;display:flex}
@@ -200,7 +204,7 @@ main{position:relative;min-height:calc(100svh - 166px);outline:none}
  .menu-page.six-drinks .drink-list li{padding-top:2px;padding-bottom:2px}
  .drink-list h3{font-size:17px}.menu-page{padding-top:5px;padding-bottom:6px}
 }
-@media screen and (max-width:360px){.categories sup{display:none}.wordmark-cn{letter-spacing:2px}.page-controls{padding-left:3vw;padding-right:3vw;gap:3px}}
+@media screen and (max-width:360px){.categories sup{display:none}.brand-tag{display:none}.page-controls{padding-left:3vw;padding-right:3vw;gap:3px}}
 /* Accessible enlarged text and short landscape screens remain scrollable. */
 @media(min-width:641px) and (max-height:600px){.poster-grid{min-height:430px}.menu-page{min-height:0}.poster-art h1{font-size:95px}.cocktail-one .poster-art h1,.cocktail-two .poster-art h1{font-size:75px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
@@ -227,4 +231,113 @@ body.motion-paused .is-active h1,body.motion-paused .is-active .drink-list li,bo
  .poster-grid{min-height:0}
  .poster-art{padding-bottom:0}
  .geometry{bottom:0}
+}
+
+/* ——— 交个朋友: poster label, motion grammar, pager, intro ——— */
+.poster-art h1{clip-path:inset(-30% -30% -14% -30%)}
+.title-inner{display:inline-block}
+.is-active .title-inner{animation:title-rise 1s cubic-bezier(.16,.84,.24,1) both}
+.is-active h1{animation:none}
+.is-active .drink-list li{animation:row-in .8s cubic-bezier(.16,.84,.24,1) both;animation-delay:calc(var(--row)*.055s + .12s)}
+@keyframes title-rise{from{transform:translateY(110%) rotate(3deg);opacity:.2}to{transform:none;opacity:1}}
+@keyframes row-in{from{opacity:0;transform:translate(calc(var(--dir,0)*44px),14px)}to{opacity:1;transform:none}}
+@keyframes fade-up{from{opacity:0;transform:translateY(10px)}to{opacity:.78;transform:none}}
+.drink-list li{transition:none}
+.drink-list li:hover{padding-left:0}
+.drink-link:after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.16,.84,.24,1)}
+.drink-list li:hover .drink-link:after,.drink-link:focus-visible:after{transform:scaleX(1)}
+.drink-list h3,.drink-en,.drink-number{transition:transform .45s cubic-bezier(.16,.84,.24,1),opacity .3s}
+.drink-list li:hover h3{transform:translateX(6px)}.drink-list li:hover .drink-en{transform:translateX(6px);transition-delay:.03s}
+.drink-list li:hover .drink-number{transform:translateX(-4px);opacity:1}
+.drink-link.is-pressed h3,.drink-link.is-pressed .drink-en{transform:translateX(6px) scale(.985);opacity:.6}
+.sweet-two .drink-list li:hover,.coffee-two .drink-list li:hover,.cocktail-one .drink-list li:hover{padding-left:18px}
+.cocktail-one .drink-list li:hover{padding-left:22px}.cocktail-two .drink-list li:hover{padding-left:18px}
+/* Sliding segmented pager. */
+.page-controls{min-height:74px}
+.pagination{position:relative;display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;--i:0}
+.pagination a{position:relative;z-index:1;display:grid;place-items:center;width:54px;height:38px;border:0;border-radius:999px;font-size:12px;letter-spacing:.06em;font-variant-numeric:tabular-nums;transition:color .45s,opacity .3s;opacity:.7}
+.pagination a:hover{background:none;opacity:1}
+.pagination a[aria-current]{background:none;color:var(--page);opacity:1}
+.pager-thumb{position:absolute;z-index:0;top:3px;bottom:3px;left:3px;width:calc((100% - 6px)/6);border-radius:999px;background:var(--ink);transform:translateX(calc(var(--i)*100%));transition:transform .6s cubic-bezier(.65,0,.2,1),background .65s}
+/* Colour wipe between menu and detail. */
+.color-wipe{position:fixed;inset:0;z-index:40;pointer-events:none}
+/* First-visit intro. */
+.splash{position:fixed;inset:0;z-index:60;display:grid;place-items:center;background:#1b1c19;color:#f3ecda;clip-path:inset(0 0 0 0);cursor:pointer}
+.splash.is-leaving{animation:splash-out .85s cubic-bezier(.76,0,.24,1) forwards}
+.splash-lockup{display:flex;flex-direction:column;align-items:center;gap:26px}
+.splash svg{display:block;overflow:visible}
+.splash-mark svg{width:104px;height:auto}
+.splash .logo-ring{stroke-width:1.5}
+.splash .logo-lens{fill:#ecec75}
+.splash .logo-ring-a{animation:ring-in-a 1.05s cubic-bezier(.16,.84,.24,1) both}
+.splash .logo-ring-b{animation:ring-in-b 1.05s cubic-bezier(.16,.84,.24,1) both}
+.splash .logo-lens{animation:lens-pop .6s .8s cubic-bezier(.3,1.7,.5,1) both}
+.splash-word .logo-word{font-size:clamp(40px,10vw,72px);letter-spacing:.13em;animation:brand-word-in .7s .65s both}
+.splash-tag{font-size:10px;letter-spacing:.7em;margin-right:-.7em;opacity:0;animation:tag-in .9s 1.45s forwards}
+@keyframes ring-in-a{from{transform:translateX(-16px);opacity:0}}
+@keyframes ring-in-b{from{transform:translateX(16px);opacity:0}}
+@keyframes lens-pop{from{transform:scale(0)}}
+@keyframes tag-in{from{opacity:0;letter-spacing:1.1em}to{opacity:.6}}
+@keyframes splash-out{to{clip-path:inset(0 0 100% 0)}}
+@media screen and (max-width:640px){
+ .poster-grid,.sweet-two .poster-grid,.coffee-two .poster-grid{grid-template-rows:minmax(110px,.82fr) auto}
+ .menu-page .drink-list li{padding:11px 0}.menu-page.six-drinks .drink-list li{padding-top:8px;padding-bottom:8px}
+ .sweet-two .drink-list li,.coffee-two .drink-list li,.cocktail-one .drink-list li,.cocktail-two .drink-list li{padding-left:12px;padding-right:12px}
+ .drink-list h3{font-size:19.5px}.drink-en{font-size:11.5px}
+ .page-controls{padding-top:8px;min-height:0}
+ .pagination{max-width:360px}.pagination a{width:auto;height:36px}
+ .brand-tag{font-size:7.5px;padding-left:10px}
+}
+@media screen and (max-width:640px) and (max-height:700px){.menu-page .drink-list li{padding:7px 0}.menu-page.six-drinks .drink-list li{padding-top:5px;padding-bottom:5px}.drink-list h3{font-size:18px}}
+@media(prefers-reduced-motion:reduce){.splash{display:none}}
+body.motion-paused .is-active .title-inner{animation:none!important}
+@media print{.splash{display:none!important}}
+
+/* Original animated motion indicator, shared by the menu and drink pages. */
+.motion-toggle{color:var(--ink);opacity:.72}
+.motion-symbol{display:flex;height:17px;gap:3px;align-items:center}
+.motion-symbol i{width:2px;height:15px;background:currentColor;animation:equalize 1.6s ease-in-out infinite alternate}
+.motion-symbol i:nth-child(2){animation-delay:-.6s;height:9px}
+.motion-symbol i:nth-child(3){animation-delay:-1.2s;height:12px}
+
+/* Size the menu from its actual header and footer, including iPad landscape. */
+body:not(.detail-mode){display:flex;flex-direction:column;min-height:100svh}
+body:not(.detail-mode) .masthead,body:not(.detail-mode) .page-controls{flex:none}
+body:not(.detail-mode) main{display:flex;flex:1;min-height:0}
+.menu-page{display:flex;flex-direction:column;flex:1;min-width:0;min-height:0}
+.menu-page .poster-grid{flex:1;width:100%;min-height:0}
+.pagination a{height:44px;min-width:44px}
+.drink-number{flex-shrink:0}
+@keyframes brand-word-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* A larger tablet keeps the same portrait rhythm as a smaller iPad. */
+@media(min-width:1001px) and (max-width:1100px) and (orientation:portrait){
+ .poster-art h1{margin-top:45px}
+ .menu-column{padding-top:38px;padding-bottom:30px}
+ .drink-list li{padding-top:28px;padding-bottom:28px}
+ .six-drinks .drink-list li{padding-top:22px;padding-bottom:22px}
+}
+@media(max-width:640px){
+ .masthead{padding-top:env(safe-area-inset-top);padding-left:max(4.5vw,env(safe-area-inset-left));padding-right:max(4.5vw,env(safe-area-inset-right))}
+ .categories>a{min-height:44px}
+ .menu-page .poster-grid{grid-template-rows:minmax(96px,1fr) auto}
+ .menu-page .drink-link{min-height:44px;gap:12px}
+ .menu-page .drink-list li{padding-top:8px;padding-bottom:8px}
+ .menu-page.six-drinks .drink-list li{padding-top:5px;padding-bottom:5px}
+ .pagination a{height:44px}
+}
+@media(max-width:640px) and (max-height:700px){
+ .menu-page .poster-grid{grid-template-rows:minmax(80px,1fr) auto}
+ .menu-page .poster-art{min-height:80px}
+ .menu-page .drink-list li{padding-top:5px;padding-bottom:5px}
+ .menu-page.six-drinks .drink-list li{padding-top:3px;padding-bottom:3px}
+}
+@media(max-width:640px) and (max-height:600px){
+ .menu-page .poster-grid{grid-template-rows:minmax(68px,1fr) auto;gap:5px}
+ .menu-page .poster-art{min-height:68px}
+ .menu-page .drink-list li,.menu-page.six-drinks .drink-list li{padding-top:2px;padding-bottom:2px}
+}
+@media(hover:none){
+ .drink-list li:hover{padding-left:0}
+ .sweet-two .drink-list li:hover,.coffee-two .drink-list li:hover,.cocktail-one .drink-list li:hover,.cocktail-two .drink-list li:hover{padding-left:12px}
+ .drink-list li:hover h3,.drink-list li:hover .drink-en,.drink-list li:hover .drink-number{transform:none}
 }

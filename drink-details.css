@@ -1,69 +1,58 @@
-/* A quiet detail: one glass, its name, its ingredients. */
+/* 交个朋友 — drink detail. A small painted cup on paper, its two names and the core ingredients. */
 .drink-link{display:flex;width:100%;align-items:center;justify-content:space-between;gap:16px;min-width:0}
 .drink-link:before{content:'';position:absolute;inset:0}
 .drink-link>div{min-width:0}
-.drink-number{display:flex;gap:16px;align-items:center}
-body.detail-mode{display:block;min-height:100svh}
-.detail-mode .masthead{display:none}
-.detail-mode main{display:block;min-height:0}
-.drink-detail{display:flex;flex-direction:column;min-height:100svh;padding:16px 5vw 20px;max-width:1500px;margin:auto}
-.detail-topline{display:flex;align-items:center;justify-content:space-between;flex:none}
-.back-to-menu,.detail-motion{display:grid;place-items:center;width:44px;height:44px}
-.back-to-menu{font-size:29px;font-weight:400;line-height:1}
-.detail-motion{opacity:.55}
-.detail-grid{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;min-height:0;padding:0 0 26px}
-.drink-stage{margin:0;width:min(480px,100%);height:clamp(300px,57svh,560px);flex:none;animation:detail-appear .65s both}
-.drink-illustration{display:block;width:100%;height:100%;overflow:visible}
-.drink-object{transform-origin:220px 258px;animation:drink-breathe 9s ease-in-out infinite}
-.detail-heading{text-align:center;max-width:100%;padding:0 8px;animation:detail-appear .65s both}
-.detail-heading h1{font-size:clamp(23px,2.8vw,34px);font-weight:500;letter-spacing:.06em;line-height:1.4;margin:0;outline:none;text-wrap:balance}
-.detail-english{font-size:14px;line-height:1.5;letter-spacing:.035em;margin:6px 0 0;opacity:.65}
-.detail-ingredients{font-size:13px;line-height:2;letter-spacing:.03em;max-width:620px;text-align:center;margin:22px 0 0;text-wrap:balance;opacity:.76}
-.ingredient-name{display:inline-block}
-.ingredient-separator{margin:0 4px;opacity:.5}
-.drink-step{display:flex;justify-content:space-between;align-items:center;flex:none;width:100%;padding:0 5px}
-.drink-step a{display:grid;place-items:center;min-width:44px;min-height:44px;font-size:25px;opacity:.5;transition:opacity .2s}
-.drink-step a:hover,.detail-motion:hover{opacity:1}
-.ice-float,.drink-garnish{animation:ice-drift 5s ease-in-out infinite;animation-delay:var(--delay,0s)}
-.drink-bubble{animation:bubble-rise var(--duration,4s) linear infinite;animation-delay:var(--delay)}
-.liquid-surface{animation:surface-pulse 4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
-@keyframes detail-appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@keyframes drink-breathe{50%{transform:translateY(-3px)}}
-@keyframes ice-drift{50%{translate:0 var(--float,-4px)}}
-@keyframes surface-pulse{50%{transform:scaleY(.85)}}
-@keyframes bubble-rise{0%{transform:translateY(0);opacity:0}12%{opacity:.7}85%{opacity:.4}100%{transform:translateY(var(--rise,-220px));opacity:0}}
-.motion-paused .drink-detail *,.tab-inactive .drink-detail *{animation-play-state:paused!important}
-@media(min-width:641px) and (max-height:650px){.drink-stage{height:290px}.detail-grid{padding-bottom:10px}.detail-ingredients{margin-top:14px}.drink-detail{padding-top:8px;padding-bottom:8px}}
-@media(max-width:640px){
- .drink-link{min-height:44px}.drink-number{gap:12px}
- .drink-detail{padding:12px 5vw 14px;min-height:100svh}
- .detail-grid{padding:0 0 25px;justify-content:center}
- .drink-stage{height:clamp(270px,47svh,440px);width:100%;max-width:400px}
- .detail-heading h1{font-size:clamp(23px,6.5vw,30px);letter-spacing:.045em}
- .detail-english{font-size:12px;margin-top:5px;letter-spacing:.025em}
- .detail-ingredients{font-size:12px;line-height:2.1;margin-top:20px;max-width:340px;letter-spacing:0}
- .ingredient-separator{margin:0 2px}
-}
-@media(max-width:640px) and (max-height:660px){.drink-stage{height:260px}.detail-ingredients{margin-top:14px}.detail-grid{padding-bottom:12px}.detail-heading h1{font-size:23px}}
-@media(prefers-reduced-motion:reduce){.drink-detail *{animation:none!important;transition:none!important}}
-@media print{body.detail-mode .masthead,body.detail-mode .detail-topline,body.detail-mode .drink-step{display:none!important}body.detail-mode .menu-page{display:none!important}body.detail-mode .drink-detail{display:flex!important;min-height:0}.drink-detail *{animation:none!important}}
-/* Only one return arrow; drink switching stays available through swipes and keyboard. */
-.detail-grid{padding-bottom:58px}
-@media(max-width:640px){.detail-grid{padding-bottom:66px}}
-@media(max-width:640px) and (max-height:660px){.detail-grid{padding-bottom:28px}}
-body.motion-paused .drink-stage,body.motion-paused .detail-heading{animation:none!important}
-
-/* Ingredient-led titles, with all fonts served from this project. */
-.detail-heading h1{font-family:var(--drink-cn),'PingFang SC','Microsoft YaHei',sans-serif;font-weight:var(--drink-weight,400);font-size:clamp(27px,3.2vw,40px);letter-spacing:var(--drink-tracking,.04em);line-height:1.45}
-.detail-english{font-family:var(--drink-en),Manrope,serif;font-size:clamp(20px,2.3vw,28px);font-weight:var(--drink-en-weight,500);font-style:var(--drink-en-style,normal);letter-spacing:.018em;line-height:1.25;opacity:.8;margin-top:5px}
-.drink-object,.ice-float,.drink-garnish,.liquid-surface,.drink-bubble,.glass-shimmer{animation:none;translate:none}
-.drink-object,.ice-float,.garnish-lift{transform-box:view-box;transform-origin:0 0}
-.signature-back,.signature-liquid,.signature-front,.signature-crown{pointer-events:none}
-[data-fx]{will-change:auto}
 .drink-number{font-variant-numeric:tabular-nums}
-@media(max-width:640px){.detail-heading h1{font-size:clamp(25px,7vw,31px)}.detail-english{font-size:20px}.detail-ingredients{margin-top:18px}.drink-number{gap:10px}}
-@media(max-width:360px){.detail-heading h1{font-size:25px}.detail-english{font-size:18px}}
-
-.detail-ingredients{font-family:var(--drink-cn),'PingFang SC','Microsoft YaHei',sans-serif;font-weight:var(--ingredient-weight,400);font-size:15px;line-height:1.9;opacity:.84;letter-spacing:.035em}
-@media(max-width:640px){.detail-ingredients{font-size:14px;line-height:1.9;letter-spacing:.02em}}
-@media(max-width:360px){.detail-ingredients{font-size:13px}}
+body.detail-mode{display:block;min-height:100svh;background:var(--page)}
+.detail-mode .masthead,.detail-mode .page-controls{display:none}
+.detail-mode main{display:block;min-height:0}
+.drink-detail{display:flex;flex-direction:column;min-height:100svh;padding:max(4px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));color:var(--ink);background:var(--page)}
+.drink-detail svg{display:block;overflow:visible}
+.icon-button{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;color:var(--ink);transition:background .25s,opacity .25s}
+.icon-button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.icon-button:hover{background:color-mix(in srgb,var(--ink) 7%,transparent)}
+.icon-button:active{transform:scale(.94)}
+.detail-top{display:flex;align-items:center;justify-content:space-between;flex:none;height:52px}
+.detail-brand svg{height:16px;width:auto}
+.detail-brand .logo-ring{stroke-width:2}
+.detail-motion{opacity:.62}
+.detail-body{flex:1;display:flex;flex-direction:column;justify-content:center;width:100%;max-width:460px;margin:0 auto;min-height:0;padding-bottom:4svh}
+.drink-stage{position:relative;flex:none;height:clamp(200px,40svh,380px);cursor:default}
+.drink-canvas{position:absolute;inset:0;display:block}
+.detail-heading{text-align:center;position:relative;z-index:1;margin-top:2px;padding:0 8%;animation:detail-in .6s .08s cubic-bezier(.2,.7,.2,1) both}
+.detail-name{margin:0;font-family:'Swei Spring Sugar SC','PingFang SC','Hiragino Sans GB',sans-serif;font-weight:400;font-size:clamp(22px,5.8vw,26px);line-height:1.4;letter-spacing:.09em;outline:none}
+.detail-english{margin:5px 0 0;font-family:Caveat,'Bradley Hand',cursive;font-size:clamp(17px,4.5vw,19px);line-height:1.35;letter-spacing:.015em;opacity:.6}
+.detail-ingredients{margin:18px auto 0;max-width:23em;text-wrap:balance;font-family:'Swei Spring Sugar SC','PingFang SC','Hiragino Sans GB',sans-serif;font-weight:300;font-size:14px;line-height:1.9;letter-spacing:.035em;opacity:.8}
+.detail-ingredients .ing{white-space:nowrap}
+.detail-ingredients .sep{opacity:.55;margin:0 .1em}
+/* Faces follow the bar's three corners: soft hand for tea and milk, brush for coffee, a light Ming for cocktails. */
+.drink-detail[data-cat=coffee] .detail-name{font-family:'Ma Shan Zheng','Swei Spring Sugar SC',cursive;font-size:clamp(24px,6.4vw,28px);letter-spacing:.045em;line-height:1.35}
+.drink-detail[data-cat=cocktail] .detail-name{font-family:'Source Han Serif CN','Songti SC',serif;font-weight:300;letter-spacing:.12em}
+.drink-detail[data-cat=cocktail] .detail-english{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:500;font-size:clamp(16px,4.3vw,18px);letter-spacing:.02em;margin-top:5px}
+.detail-pager{display:flex;align-items:center;justify-content:space-between;flex:none;height:56px;width:100%;max-width:520px;margin:0 auto}
+.detail-step{opacity:.55}.detail-step:hover,.detail-step:focus-visible{opacity:1}
+/* Switching drinks: the words slide in from the side the finger moved toward. */
+.detail-body.is-sliding .detail-heading{animation:detail-slide .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes detail-in{from{opacity:0;transform:translateY(6px)}}
+@keyframes detail-slide{from{opacity:0;transform:translateX(calc(var(--dir,1)*22px))}}
+/* Wide or short-and-wide screens put the cup beside its name; the page scrolls rather than clipping. */
+@media(min-aspect-ratio:5/4) and (min-width:640px){
+ .detail-body{flex-direction:row;align-items:center;max-width:980px;gap:2vw;padding-bottom:0}
+ .drink-stage{flex:1 1 55%;height:clamp(220px,calc(100svh - 132px),560px)}
+ .detail-heading{text-align:left;flex:1 1 45%;margin:0;padding:0 4% 0 0;max-width:400px}
+ .detail-name{font-size:clamp(25px,2.6vw,34px)}
+ .drink-detail[data-cat=coffee] .detail-name{font-size:clamp(28px,2.9vw,38px)}
+ .detail-english{font-size:clamp(18px,1.8vw,23px)}
+ .drink-detail[data-cat=cocktail] .detail-english{font-size:clamp(18px,1.8vw,23px)}
+ .detail-ingredients{font-size:15px;margin:22px 0 0;text-wrap:pretty}
+ .detail-pager{max-width:980px}
+}
+@media(max-height:500px) and (min-aspect-ratio:5/4){
+ .detail-top{height:46px}.detail-pager{height:46px}
+ .drink-stage{height:max(180px,calc(100svh - 112px))}
+ .detail-ingredients{margin-top:14px;font-size:14px}
+}
+@media(max-width:360px){.detail-name{font-size:22px;letter-spacing:.07em}.detail-heading{padding:0 6%}}
+@media(prefers-reduced-motion:reduce){.drink-detail *{animation:none!important;transition:none!important}}
+body.motion-paused .drink-detail *{animation:none!important}
+@media print{.detail-top,.detail-pager{display:none!important}.drink-detail{min-height:0;color:#222}}

@@ -1,4 +1,5 @@
-Copyright 2018 The ZCOOL QingKe HuangYou Project Authors (https://www.github.com/googlefonts/zcool-qingke-huangyou)
+Swei Spring Sugar CJKsc (獅尾四季春加糖, Simplified Chinese build)
+Copyright (c) 2020, Chun Yu Yao. Source: https://github.com/max32002/swei-spring
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:

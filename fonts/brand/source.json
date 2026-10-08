@@ -1,0 +1,8 @@
+{
+  "family": "JG Friends Sans",
+  "upstream": "Source Han Sans SC Bold",
+  "version": "2.005R",
+  "source": "https://github.com/adobe-fonts/source-han-sans/releases/tag/2.005R",
+  "subset": "交个朋友",
+  "license": "OFL.txt"
+}

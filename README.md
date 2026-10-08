@@ -1,106 +1,141 @@
-# MENU — 现代几何动态饮品单
+# 交个朋友 · Home Bar
 
-六页独立视觉风格，32 款正式饮品。菜单仅展示中英文饮品名称，不设价格；点击任一饮品可进入简洁的动态详情页。
+三类六页、32 款饮品的动态饮品单。菜单只显示中英文饮品名称，不设价格。点开任意一杯，进入这杯饮品的页面。
 
 ## 在线访问
 
-[打开 Menu 饮品单](https://oscarcarrotluo.github.io/Homebar/)
+[打开交个朋友饮品单](https://oscarcarrotluo.github.io/Homebar/)
 
-网站由 GitHub Pages 从 `main` 分支的根目录发布。将菜单修改提交并推送到 `main` 后，GitHub 会自动更新网站。
+网站由 GitHub Pages 从 `main` 分支根目录发布。
 
-## 直接打开
+## 本地查看
 
-双击 `index.html` 即可使用。HTML、样式、交互、三维库与字体全部保存在本地；无构建步骤、无 npm 依赖、无 CDN 请求。
+所有资源都在本地，没有构建步骤和 CDN 请求，可以直接双击 `index.html`。也可以用一个静态服务器打开：
 
-保留目录结构，不要只移动 HTML 而遗漏旁边的资源。
-
-## 六页设计
-
-| 页面 | 饮品 | 几何与运动 |
-| --- | --- | --- |
-| Sweet 01 | 5 款奶盖茶饮 | 柠檬黄网格球、漂浮薄片与轻盈卫星 |
-| Sweet 02 | 6 款果香椰饮 | 薄荷绿分层圆片、珊瑚橙球与错位波动 |
-| Coffee 01 | 5 款浓郁咖啡 | 深咖底色、奶油色连续环结与慢速旋转 |
-| Coffee 02 | 5 款椰香果萃咖啡 | 琥珀色渐变方片、扭转堆叠与下落微粒 |
-| Cocktail 01 | 5 款高杯鸡尾酒 | 钴蓝与青柠撞色、上升气泡和立体线框 |
-| Cocktail 02 | 6 款经典短饮 | 酒红底色、铜色放射薄片与环绕运动 |
-
-三维构成由代码实时生成，没有照片、外部模型或贴图。甜饮与咖啡名称及鸡尾酒列表按项目「生成饮品照片素材」对话最终要求核对；英文为菜单用译名。
-
-## 饮品详情
-
-每款详情仅展示程序绘制的动态杯身、中英文名称和主要用料。沿用所属菜单的配色；手机和 iPad 竖屏均采用居中布局。仅保留一个返回箭头与暂停动效图标，没有用量、制作步骤或额外说明。
-
-- 32 个独立地址，例如 `index.html#drink/moscow`，可刷新、分享与浏览器前进 / 后退。
-- 侧视图由本地 SVG 代码绘制，呈现对应杯型、奶盖、液体层次、冰块与气泡；32 款各有独立的运动主题，如桂花流沙、浓缩咖啡渗入椰奶、薄荷翻卷、汤力气泡双螺旋、琥珀折光，不依赖照片或外部素材。
-- 中英文标题与配料字体按饮品特征搭配；字体随项目本地保存。配料使用对应中文字体，并单独优化小字号的字重与行距。
-- `drink-personalities.js` 定义各款字体与运动节奏；`drink-signatures.js` 绘制独立动效构成；`drink-motion.js` 以最高 30 fps 驱动当前详情页，离开详情、切到后台或暂停时停止。
-- 返回时恢复原菜单页与饮品焦点；详情页左右滑动或使用方向键切换饮品，Esc 返回菜单。
-- `drink-data.js` 的 `essentials` 保存页面显示的核心用料（数量按实际组成，不限制为两三项），`ingredients` 保留核对资料，其他字段为视觉设置，顺序对应 `menu-data.js` 的 32 款饮品。其中 layer 的 weight 只是绘图比例，不是调制用量。
-- 甜饮与咖啡以项目内已确认的用料和杯型为基础；未确认部分是用料参考，不视为店内最终配方。Moscow 保持咖啡、牛奶、奶油、巧克力粉的版本，中文为「莫斯科」。教父按用户版本加入肉桂，并绘制部分浸入酒液、带卷纹的肉桂棒；尼格罗尼使用橙皮。
-
-配方资料仅用于核对原料，不在页面增加说明文字。经典鸡尾酒参考 [IBA](https://iba-world.com/cocktails/)、[Tanqueray](https://www.tanqueray.com/en-gb/cocktails/gin-and-tonic-tanqueray-london-dry)、[Disaronno](https://disaronno.com/zh-hans/drinks/godfather/) 与 [Difford’s Guide](https://www.diffordsguide.com/cocktails/recipe/2887/sweet-martini)，每款来源保存在 `drink-data.js`。小红书搜索需要登录，未能核实其浏览 / 点赞排名，未声称采用高赞笔记。
-
-## 使用方式
-
-- 点击顶部分类或底部六个页码；主界面已移除重复分类说明、装饰编号、动效文字与上一页 / 下一页按钮。
-- 饮品编号跨页连续：Sweet 为 101–111，Coffee 为 201–210，Cocktail 为 301–311；编号旁没有箭头，整行仍可点击。
-- 键盘左右方向键翻页，手机左右滑动翻页。
-- 鼠标移动会产生轻微三维视差；悬停饮品名会略微提升对应几何运动速度。
-- 顶部按钮可以暂停动效；系统“减少动态效果”偏好会默认关闭动效。
-- 六页支持独立链接，例如 `index.html#coffee-2`；浏览器前进 / 后退可恢复页面。
-- 手机采用纵向排版；iPad 横竖屏采用对应的双栏比例。
-- WebGL 不可用时自动显示轻量 CSS 几何动效。
-- 浏览器打印会输出全部六页文字菜单。
-
-## 上传 GitHub Pages
-
-1. 将本目录的**内容**上传至你的 GitHub 仓库根目录，保留 `fonts/` 与 `vendor/` 两个子目录。
-2. 打开仓库 **Settings → Pages**。
-3. 在 **Build and deployment** 中选择 **Deploy from a branch**，选择 `main` 分支及 `/ (root)`，保存。
-4. 等待 GitHub Pages 发布后，通过该页面提供的网址访问。
-
-所有资源均使用相对路径，适合 `用户名.github.io/仓库名/` 形式的项目地址。
-
-参考：[GitHub Pages 官方说明](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)。
-
-## 修改菜单
-
-编辑 `menu-data.js` 的 `drinks` 数组即可。例如：
-
-```js
-['柠檬冰奶', 'Lemon Iced Milk']
+```bash
+python3 -m http.server 8642
 ```
 
-每页的 `colors` 依次为背景、文字、强调色和分隔线颜色。页面布局和手机 / iPad 断点位于 `styles.css`；三维场景位于 `geometry.js`。
+然后访问 `http://localhost:8642/`。
+
+## 品牌
+
+- **名称**：交个朋友，副标 HOME BAR。
+- **标志**：两个相交的杯口圆环，交集用当前页面的强调色填充。
+- **字标**：「交个朋友」使用简体思源黑体 Bold 的四字子集，独立本地加载；双环图形保留。字体来源与 OFL 许可见 `fonts/brand/`。
+- **首访开场**：每次会话第一次打开时播放一次，可点击跳过；系统开启「减少动态效果」时不播放。
+
+`brand.js` 生成页眉、开场和饮品页顶部的标志。
+
+## 菜单页
+
+- 六页使用原版大胆配色和有光泽的 Three.js 几何，保留精简导航。
+- 主菜单饮品名使用现代无衬线字体；详情保留各类别的简体字体。
+- 编号按分类连续：Sweet 101 起，Coffee 201 起，Cocktail 301 起。
+- 底部是六段式页码。点开饮品时，纸色从点击处铺开。
+
+## 饮品页
+
+只有一杯小幅手绘饮品、中文名、英文名和核心用料，大量留白。顶部是返回、标志和播放／暂停；底部是上一杯／下一杯。左右快速滑动也能换一杯。
+
+**画法**：杯子画在一块撕边纸片上，旁边有一小片落地阴影。
+- 液体用水粉质感的色块。
+- 玻璃只有铅笔轮廓和一笔高光。
+- 陶瓷杯是不透明的哑光杯身，木质部件有木纹。
+- 不使用图片或模型，每杯都在一个与杯子等大的 Canvas 上实时绘制。
+
+**动效**：每杯只有一个主运动，其余部分保持静止。进场只是短暂的淡入；暂停或减少动态效果时，直接显示完整的静止画面。
+
+| 饮品 | 主运动 |
+| --- | --- |
+| 柠檬冰奶 / 香蕉冰卡布 | 奶盖上细小的气泡起伏 |
+| 海盐奶盖抹茶 / 生椰拿铁 / 莫斯科 / 长岛冰茶 | 上层缓缓晕入下层 |
+| 苹果红茶奶盖 | 茶中的苹果薄片轻轻浮动 |
+| 抹茶咸乳酪 / 宫崎骏的夏天 | 乳酪或白奶沿杯壁卷开 |
+| 泰奶咸乳酪 / 黑芝麻奶盖拿铁 / 生巧海盐摩卡 | 乳酪、芝麻或巧克力沿杯壁慢慢挂下，黏度各不相同 |
+| 可可椰子糖 / 针王苹果 / 西西里冷萃 / 螺丝起子 / 古典 | 冰块极轻地漂移 |
+| 抹茶椰子糖 / 教父 | 一道光慢慢扫过透明液体 |
+| 冰川茉蓝椰子海 | 蓝色糖浆与椰子水的过渡缓慢起伏 |
+| 日落橙子海 | 橙汁中的果肉悬浮 |
+| 桂花流沙拿铁 | 偶尔有一两朵桂花从杯边飘落到奶盖上 |
+| 开心果拿铁 | 奶沫缓慢起伏 |
+| 生椰美式 | 浓缩咖啡细丝穿过椰子水 |
+| 日落美式 | 橙汁与咖啡的分层线轻轻波动 |
+| 金汤力 / 金菲士 | 细泡在杯中上升，金菲士的气泡更密更快 |
+| 莫吉托 | 杯中的薄荷叶缓慢转动 |
+| 尼格罗尼 | 冰上的橙皮微微回弹 |
+| 威士忌酸 | 蛋白泡上三滴苦精慢慢晕开 |
+| 代基里 | 冰镇杯外的一颗水珠滑落 |
+| 甜马天尼 | 杯底的樱桃轻轻浮动 |
+
+**杯型**：依据 `../生成记录.json` 与 `../鸡尾酒生成记录.json` 中用户确认的杯型和出品描述。
+
+| 杯型 | 饮品 |
+| --- | --- |
+| 细长直筒杯 | 柠檬冰奶 |
+| 微收口透明高杯 | 其余茶饮与椰子咖啡 |
+| 矮款阶梯收腰杯 | 可可 / 抹茶椰子糖、生巧、香蕉、日落美式、莫斯科、西西里 |
+| 琥珀把手玻璃杯 | 桂花流沙拿铁 |
+| 米白锥形陶瓷杯 | 开心果拿铁，配胡桃木方把手和圆形木底座 |
+| 高玻璃杯 | 高杯鸡尾酒 |
+| 威士忌杯 | 古典、教父、尼格罗尼、威士忌酸 |
+| 马天尼杯 | 代基里、甜马天尼 |
+
+## 字体
+
+字体按三个类别区分，名字轻、配料清楚。中文字体全部使用简体中文（大陆规范）字形：例如草字头连写，「冷」「教」「麻」等字按大陆标准书写。
+
+| 类别 | 中文名 | 英文名 |
+| --- | --- | --- |
+| 甜饮 | 春糖体简体版 Swei Spring Sugar CJKsc | 手写体 Caveat |
+| 咖啡 | 马善政毛笔体（大陆书法字体） | 手写体 Caveat |
+| 鸡尾酒 | 思源宋体大陆版 Source Han Serif CN Light | Cormorant 斜体 |
+
+配料统一用春糖体简体版 Light。
+
+源雲明體只有台湾、繁体和日文版本，没有简体版，因此鸡尾酒名改用它的母体：思源宋体大陆版 Light。两者字形骨架和粗细一致，只是思源宋体的笔画转角不做圆。
+
+全部字体都是 OFL 许可的本地子集，只包含现有饮品名和配料用到的字符。新增饮品或配料后，先下载以下源文件：
+
+- `SweiSpringSugarCJKsc-Regular.ttf`、`SweiSpringSugarCJKsc-Light.ttf`：来自 [max32002/swei-spring](https://github.com/max32002/swei-spring) 的 CJK SC 文件夹
+- `SourceHanSerifCN-Light.otf`：来自 [adobe-fonts/source-han-serif](https://github.com/adobe-fonts/source-han-serif) 的 SubsetOTF/CN
+
+把它们放进同一个文件夹，然后重建子集：
+
+```bash
+python3 fonts/detail/make-subsets.py --src 字体所在文件夹
+```
+
+## 修改
+
+- **饮品名称与菜单配色**：`menu-data.js`
+- **页面上显示的核心用料**：`drink-data.js` 的 `essentials`
+- **每杯的杯型、液体分层、冰块、装饰和主运动**：`drink-recipes.js`
+- **绘制与动效**：`drink-scene.js`
 
 ## 文件结构
 
 ```text
-index.html              网页入口
-menu-data.js            32 款饮品与页面配色
-menu.js                 菜单与详情渲染、哈希路由、导航和动效开关
-drink-data.js           32 款饮品用料、杯型、颜色与配方参考
-drink-art.js            程序绘制的 SVG 饮品侧视图
-drink-personalities.js  每款字体、运动主题与节奏
-drink-signatures.js     32 套与饮品特征相关的动效构成
-drink-motion.js         自动材质与流体运动，随暂停和页面切换启停
-drink-fonts.css         本地中英文字体定义
-drink-details.css       极简详情页、手机和 iPad 响应式样式
-geometry.js             六套程序化三维几何场景
-styles.css              独立主题、响应式和 CSS 降级动效
-fonts/                  本地 Manrope 字体和 OFL 许可
-fonts/detail/           详情字体子集、各字体 OFL 许可与来源记录
-vendor/three.min.js      本地 Three.js 0.160.0
-vendor/THREE-LICENSE.txt Three.js MIT 许可
-.nojekyll               GitHub Pages 静态资源配置
-README.md               本说明
+index.html           入口
+brand.js             交个朋友标志与字标
+menu-data.js         六页饮品与配色
+drink-data.js        32 款饮品用料与配方参考
+drink-recipes.js     32 杯的画法：杯型、分层、装饰、主运动
+drink-scene.js       饮品绘制引擎（纸片、杯子、液体、动效）
+menu.js              菜单 / 详情、哈希路由、转场、手势
+geometry.js          菜单页六套 Three.js 几何
+styles.css           菜单、页眉、页码、开场
+drink-details.css    饮品页排版
+drink-fonts.css      饮品页字体
+fonts/               Manrope 与饮品页字体子集（含 OFL 许可与重建脚本）
+vendor/three.min.js  Three.js 0.160.0（MIT）
 ```
 
 ## 第三方许可
 
-- Three.js 0.160.0：MIT，许可随 `vendor/THREE-LICENSE.txt` 提供。
-- Manrope：SIL Open Font License 1.1，许可随 `fonts/OFL.txt` 提供。
-- 详情页使用 Noto Serif SC、Ma Shan Zheng、ZCOOL KuaiLe、ZCOOL QingKe HuangYou、Fraunces、Cormorant Garamond、Space Grotesk、Bebas Neue、Caveat。对应 OFL 许可与下载来源均位于 `fonts/detail/`。中文字体按现有标题与核心用料裁切；新增汉字时请更新子集，否则会使用系统后备字体。
+- Three.js 0.160.0：MIT，许可见 `vendor/THREE-LICENSE.txt`。
+- Manrope、Swei Spring Sugar、Source Han Serif、Ma Shan Zheng、Caveat、Cormorant Garamond：SIL Open Font License 1.1，许可与来源见 `fonts/` 和 `fonts/detail/`。
 
-采用经典脚本形式以兼容直接双击本地 HTML，不需要启用开发服务器。首次加载时 Three.js 可能输出其经典脚本版本的弃用提示，不影响本地功能。
+### 手机与 iPad 排版
+
+主菜单按实际页眉、页脚高度填满视口，页码触控区为 44px。饮品详情在竖屏使用较小字号、居中品名和核心用料；宽横屏仍为杯子在左、文字左对齐。小屏或放大文字允许自然滚动，不隐藏内容。

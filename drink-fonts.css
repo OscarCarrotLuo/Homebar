@@ -1,85 +1,9 @@
-/* Self-hosted, drink-title and ingredient font subsets. Source licenses are in fonts/detail/. */
-@font-face {
-  font-family: 'Noto Serif SC';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url(fonts/detail/NotoSerifSC-0.ttf?v=identity-4) format('truetype');
-}
-@font-face {
-  font-family: 'Noto Serif SC';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(fonts/detail/NotoSerifSC-1.ttf?v=identity-4) format('truetype');
-}
-@font-face {
-  font-family: 'Ma Shan Zheng';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(fonts/detail/MaShanZheng-0.ttf?v=identity-4) format('truetype');
-}
-@font-face {
-  font-family: 'ZCOOL KuaiLe';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(fonts/detail/ZCOOLKuaiLe-0.ttf?v=identity-4) format('truetype');
-}
-@font-face {
-  font-family: 'ZCOOL QingKe HuangYou';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(fonts/detail/ZCOOLQingKe-0.ttf?v=identity-4) format('truetype');
-}
-@font-face {
-  font-family: 'Fraunces';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url(fonts/detail/Fraunces-0.ttf?v=identity-4) format('truetype');
-}
-@font-face {
-  font-family: 'Fraunces';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(fonts/detail/Fraunces-1.ttf?v=identity-4) format('truetype');
-}
-@font-face {
-  font-family: 'Cormorant Garamond';
-  font-style: italic;
-  font-weight: 500;
-  font-display: swap;
-  src: url(fonts/detail/Cormorant-0.ttf?v=identity-4) format('truetype');
-}
-@font-face {
-  font-family: 'Cormorant Garamond';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url(fonts/detail/Cormorant-1.ttf?v=identity-4) format('truetype');
-}
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url(fonts/detail/SpaceGrotesk-0.ttf?v=identity-4) format('truetype');
-}
-@font-face {
-  font-family: 'Bebas Neue';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(fonts/detail/BebasNeue-0.ttf?v=identity-4) format('truetype');
-}
-@font-face {
-  font-family: 'Caveat';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url(fonts/detail/Caveat-0.ttf?v=identity-4) format('truetype');
-}
+/* Self-hosted Simplified Chinese subsets, cut to the drink names and ingredients.
+   Licences, sources and the rebuild script are in fonts/detail/.
+   block: names wait briefly for their face instead of jumping from a fallback. */
+@font-face{font-family:'Swei Spring Sugar SC';font-weight:400;font-display:block;src:url(fonts/detail/SweiSpringSugarSC-Regular.woff?v=2) format('woff')}
+@font-face{font-family:'Swei Spring Sugar SC';font-weight:300;font-display:block;src:url(fonts/detail/SweiSpringSugarSC-Light.woff?v=2) format('woff')}
+@font-face{font-family:'Ma Shan Zheng';font-weight:400;font-display:block;src:url(fonts/detail/MaShanZheng.woff?v=1) format('woff')}
+@font-face{font-family:'Source Han Serif CN';font-weight:300;font-display:block;src:url(fonts/detail/SourceHanSerifCN-Light.woff?v=2) format('woff')}
+@font-face{font-family:'Caveat';font-weight:400;font-display:block;src:url(fonts/detail/Caveat.woff?v=1) format('woff')}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:500;font-display:block;src:url(fonts/detail/Cormorant-Italic.woff?v=1) format('woff')}

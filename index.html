@@ -2,37 +2,50 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#d9d9ce">
-  <meta name="description" content="Sweet、Coffee、Cocktail。六页现代几何动态饮品单。">
-  <title>MENU — Sweet / Coffee / Cocktail</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%23e8ed6d'/%3E%3Cpath d='M9 23V9l7 8 7-8v14' fill='none' stroke='%23282925' stroke-width='3'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css?v=menu-simple-1">
-  <link rel="stylesheet" href="drink-fonts.css?v=4">
-  <link rel="stylesheet" href="drink-details.css?v=identity-3">
-  <script src="menu-data.js" defer></script>
-  <script src="drink-data.js?v=identity-3" defer></script>
-  <script src="drink-personalities.js?v=1" defer></script>
-  <script src="drink-signatures.js?v=1" defer></script>
-  <script src="drink-art.js?v=identity-3" defer></script>
+  <meta name="description" content="交个朋友 Home Bar — Sweet、Coffee、Cocktail，三十二杯动态饮品单。">
+  <title>交个朋友 · Home Bar</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231c1d1a'/%3E%3Cpath d='M16 9.2A8 8 0 0 1 16 22.8A8 8 0 0 1 16 9.2Z' fill='%23ecec75'/%3E%3Ccircle cx='11' cy='16' r='8' fill='none' stroke='%23f1ead8' stroke-width='2'/%3E%3Ccircle cx='21' cy='16' r='8' fill='none' stroke='%23f1ead8' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/brand/JGFriendsSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/detail/SweiSpringSugarSC-Regular.woff?v=2" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="fonts/detail/SweiSpringSugarSC-Light.woff?v=2" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=brand-layout-1">
+  <link rel="stylesheet" href="drink-fonts.css?v=jgpy-5">
+  <link rel="stylesheet" href="drink-details.css?v=type-rhythm-3">
+  <script src="brand.js?v=brand-layout-1" defer></script>
+  <script src="menu-data.js?v=menu-vivid-1" defer></script>
+  <script src="drink-data.js?v=jgpy-5" defer></script>
+  <script src="drink-recipes.js?v=jgpy-5" defer></script>
+  <script src="drink-scene.js?v=portrait-center-1" defer></script>
   <script src="vendor/three.min.js" defer></script>
-  <script src="menu.js?v=identity-3" defer></script>
-  <script src="geometry.js?v=details-3" defer></script>
-  <script src="drink-motion.js?v=identity-2" defer></script>
+  <script src="menu.js?v=motion-bars-1" defer></script>
+  <script src="geometry.js?v=menu-vivid-1" defer></script>
 </head>
 <body>
+  <div class="splash" aria-hidden="true" hidden>
+    <div class="splash-lockup">
+      <span class="splash-mark" data-logo="mark"></span>
+      <span class="splash-word" data-logo="word" data-weight="9"></span>
+      <span class="splash-tag">HOME BAR</span>
+    </div>
+  </div>
   <header class="masthead">
-    <a class="wordmark" href="#sweet-1" aria-label="饮品单首页">M<span class="wordmark-e">E</span>NU<span class="wordmark-cn">饮品单</span></a>
+    <a class="brand" href="#sweet-1" aria-label="交个朋友 Home Bar，回到饮品单首页">
+      <span class="brand-mark" data-logo="mark"></span>
+      <span class="brand-word" data-logo="word" data-weight="12"></span>
+      <span class="brand-tag">HOME<br>BAR</span>
+    </a>
     <nav class="categories" aria-label="饮品分类">
       <a href="#sweet-1" data-category="sweet" aria-current="page">Sweet <sup>01—02</sup></a>
       <a href="#coffee-1" data-category="coffee">Coffee <sup>03—04</sup></a>
       <a href="#cocktail-1" data-category="cocktail">Cocktail <sup>05—06</sup></a>
     </nav>
-    <button class="motion-toggle" aria-label="暂停动效" aria-pressed="false"><span class="motion-symbol" aria-hidden="true"><i></i><i></i><i></i></span></button>
+    <button class="motion-toggle" type="button" aria-label="暂停动效" aria-pressed="false"></button>
   </header>
   <main id="menu" tabindex="-1" aria-label="饮品单"></main>
-  <noscript><p class="noscript-note">请启用 JavaScript 查看六页饮品单。</p></noscript>
+  <noscript><p class="noscript-note">请启用 JavaScript 查看交个朋友饮品单。</p></noscript>
   <p id="page-status" class="sr-only" role="status" aria-live="polite"></p>
-  <footer class="page-controls"><nav class="pagination" aria-label="选择菜单页"><a href="#sweet-1" aria-label="Sweet 第一页" aria-current="page">01</a><a href="#sweet-2" aria-label="Sweet 第二页">02</a><a href="#coffee-1" aria-label="Coffee 第一页">03</a><a href="#coffee-2" aria-label="Coffee 第二页">04</a><a href="#cocktail-1" aria-label="Cocktail 第一页">05</a><a href="#cocktail-2" aria-label="Cocktail 第二页">06</a></nav></footer>
+  <footer class="page-controls"><nav class="pagination" aria-label="选择菜单页"><span class="pager-thumb" aria-hidden="true"></span></nav></footer>
 </body>
 </html>
